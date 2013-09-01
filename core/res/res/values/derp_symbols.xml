@@ -106,4 +106,9 @@
 
     <!-- Ambient notification light color -->
     <java-symbol type="integer" name="config_ambientNotificationDefaultColor" />
+
+    <!-- Package Manager -->
+    <java-symbol type="array" name="config_deviceDisabledComponents" />
+    <java-symbol type="array" name="config_globallyDisabledComponents" />
+    <java-symbol type="array" name="config_forceEnabledComponents" />
 </resources>
