@@ -214,4 +214,7 @@
     <!-- Power menu QS tile -->
     <string name="quick_settings_power_menu_label">Ein-/Aus-Menü</string>
 
+    <!-- Volume panel QS tile -->
+    <string name="quick_settings_volume_panel_label">Lautstärkefenster</string>
+
 </resources>
