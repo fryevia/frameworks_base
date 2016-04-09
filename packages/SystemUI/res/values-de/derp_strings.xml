@@ -155,4 +155,8 @@
     <string name="applock_credential">&#160;zum Entsperren</string>
     <string name="applock_unlock">Entsperren</string>
 
+    <!-- Heads up snooze toast -->
+    <string name="heads_up_snooze_message_one_minute"><xliff:g id="string">%s</xliff:g> - Peeking-Benachrichtigungen schlummern für 1 Minute</string>
+    <string name="heads_up_snooze_message"><xliff:g id="string">%1$s</xliff:g> - Peeking-Benachrichtigungen schlummern für <xliff:g id="number">%1$d</xliff:g> Minuten</string>
+
 </resources>
