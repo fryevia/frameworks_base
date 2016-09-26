@@ -49,4 +49,11 @@
     <string name="accessibility_quick_settings_heads_up_changed_off">Pop-up ausgeschaltet.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">Pop-up eingeschaltet.</string>
 
+    <!-- Sync QS Tile -->
+    <string name="quick_settings_sync_label">Synchronisation</string>
+    <string name="accessibility_quick_settings_sync_off">Synchronisierung aus.</string>
+    <string name="accessibility_quick_settings_sync_on">Synchronisierung an.</string>
+    <string name="accessibility_quick_settings_sync_changed_off">Synchronisierung ist ausgeschaltet.</string>
+    <string name="accessibility_quick_settings_sync_changed_on">Synchronisierung ist eingeschaltet.</string>
+
 </resources>
