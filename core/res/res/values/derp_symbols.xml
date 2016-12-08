@@ -211,4 +211,7 @@
 
     <!-- App Lock -->
     <java-symbol type="string" name="lockscreen_pattern_instructions" />
+
+    <!-- Whether doze feature is enabled by default in settings -->
+    <java-symbol type="bool" name="config_dozeDefaultEnabled" />
 </resources>
