@@ -869,6 +869,9 @@ public final class DefaultPermissionGrantPolicy {
                     MICROPHONE_PERMISSIONS);
         }
 
+        // OmniJaws
+        grantSystemFixedPermissionsToSystemPackage(pm, "org.omnirom.omnijaws", userId, ALWAYS_LOCATION_PERMISSIONS);
+
         // Google Account
         grantSystemFixedPermissionsToSystemPackage(pm, "com.google.android.gsf.login", userId, CONTACTS_PERMISSIONS,
                 PHONE_PERMISSIONS);
