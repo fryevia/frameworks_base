@@ -92,4 +92,8 @@
     <string name="global_screenshot_selector_capture_description">Teil-Screenshot aufnehmen</string>
     <string name="global_screenshot_selector_cancel_description">Teil-Screenshot abbrechen</string>
 
+    <!-- Screenshot QS tile -->
+    <string name="quick_settings_screenshot_label">Screenshot</string>
+    <string name="quick_settings_region_screenshot_label">Teil-Screenshot</string>
+
 </resources>

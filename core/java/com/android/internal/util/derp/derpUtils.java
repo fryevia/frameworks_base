@@ -34,6 +34,8 @@ import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.os.BatteryManager;
 import android.os.SystemProperties;
+import android.view.IWindowManager;
+import android.view.WindowManagerGlobal;
 import android.util.DisplayMetrics;
 
 import com.android.internal.R;
@@ -41,6 +43,9 @@ import com.android.internal.R;
 import java.util.Locale;
 
 public class derpUtils {
+
+    public static final String INTENT_SCREENSHOT = "action_handler_screenshot";
+    public static final String INTENT_REGION_SCREENSHOT = "action_handler_region_screenshot";
 
     public static boolean isPackageInstalled(Context context, String pkg, boolean ignoreState) {
         if (pkg != null) {
@@ -193,5 +198,14 @@ public class derpUtils {
         // Use boolean to determine celsius or fahrenheit
         return String.valueOf((n - c) % 2 == 0 ? (int) temp :
                 ForC ? c * 9/5 + 32 + "°F" :c + "°C");
+    }
+
+    public static void takeScreenshot(boolean full) {
+        IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
+        try {
+            wm.sendCustomAction(new Intent(full? INTENT_SCREENSHOT : INTENT_REGION_SCREENSHOT));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }
