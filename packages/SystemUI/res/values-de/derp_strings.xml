@@ -204,7 +204,11 @@
     <string name="quick_settings_compass_W">W</string>
     <string name="quick_settings_compass_NW">NW</string>
 
-   <!-- Change clockface -->
-   <string name="change_clock_face">Wischen Sie, um das Zifferblatt zu ändern</string>
+    <!-- Change clockface -->
+    <string name="change_clock_face">Wischen Sie, um das Zifferblatt zu ändern</string>
+
+    <!-- Language toggle tile -->
+    <string name="quick_settings_locale_label">Sprache</string>
+    <string name="quick_settings_locale_more_locales_toast">Bitte konfigurieren Sie mehrere Sprachen, um die Umschaltfunktion zu aktivieren</string>
 
 </resources>
