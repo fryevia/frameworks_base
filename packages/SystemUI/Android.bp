@@ -74,6 +74,7 @@ android_library {
         "faceunlock_framework",
     ],
     manifest: "AndroidManifest.xml",
+    additional_manifests: ["DerpFestManifest.xml"],
 
     libs: [
         "ims-common",
