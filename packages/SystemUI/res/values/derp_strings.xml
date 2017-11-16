@@ -128,4 +128,8 @@
     <!-- Ambient Music Ticker -->
     <string name="ambientmusic_songinfo" formatted="false">%s by %s</string>
 
+    <!-- Reboot/Recovery QS tile -->
+    <string name="quick_settings_reboot_label">Reboot</string>
+    <string name="quick_settings_reboot_recovery_label">Recovery</string>
+
 </resources>
