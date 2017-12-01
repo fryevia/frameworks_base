@@ -86,5 +86,6 @@ public class SystemSettings {
         Settings.System.NOTIFICATION_LIGHT_PULSE,
         Settings.System.SMART_SPACE,
         Settings.System.RINGTONE_VIBRATION_PATTERN,
+        Settings.System.PROXIMITY_ON_WAKE,
     };
 }

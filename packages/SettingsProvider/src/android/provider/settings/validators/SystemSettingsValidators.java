@@ -211,5 +211,6 @@ public class SystemSettingsValidators {
         VALIDATORS.put(System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.SMART_SPACE, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.RINGTONE_VIBRATION_PATTERN, new InclusiveIntegerRangeValidator(0, 5));
+        VALIDATORS.put(System.PROXIMITY_ON_WAKE, BOOLEAN_VALIDATOR);
     }
 }
