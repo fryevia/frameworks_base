@@ -168,4 +168,7 @@
     <string name="gaming_mode_not_enabled">Der Gaming-Modus ist in den Einstellungen deaktiviert</string>
     <string name="quick_settings_gaming_mode_label">Gaming-Modus</string>
 
+    <!-- CPUInfo tile -->
+    <string name="quick_settings_cpuinfo_label">CPU-Info</string>
+
 </resources>
