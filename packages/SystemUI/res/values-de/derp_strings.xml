@@ -103,4 +103,6 @@
     <string name="screenrecord_stopdot_label">Stopppunkt anzeigen\nLang drücken, um es zu bewegen</string>
     <string name="screenrecord_lowquality_label">Geringere Qualität für kleinere Dateien</string>
 
+    <string name="quick_settings_sound_search">Musikerkennung</string>
+
 </resources>
