@@ -121,7 +121,8 @@
     <!-- Ambient Music Ticker -->
     <string name="ambientmusic_songinfo" formatted="false">%s von %s</string>
 
-    <!-- Reboot/Recovery QS tile -->
+    <!-- Power off/Reboot/Recovery QS Tile -->
+    <string name="quick_settings_poweroff_label">Ausschalten</string>
     <string name="quick_settings_reboot_label">Neustart</string>
     <string name="quick_settings_reboot_recovery_label">Recovery</string>
 
