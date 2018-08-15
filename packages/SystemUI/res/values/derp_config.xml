@@ -62,4 +62,9 @@
     <!-- FPSInfoService FPS node file path -->
     <string name="config_fpsInfoSysNode" translatable="false"></string>
 
+    <!-- The default tiles to display in QuickSettings -->
+    <string name="quick_settings_tiles_extra" translatable="false">
+        aod,anti_flicker,caffeine,compass,cpuinfo,dataswitch,fpsinfo,gaming,heads_up,killapp,locale,livedisplay,mono,powermenu,powershare,reading_mode,reboot,sound,screenshot,soundsearch,sync,usb_tether,volume_panel,weather
+    </string>
+
 </resources>
