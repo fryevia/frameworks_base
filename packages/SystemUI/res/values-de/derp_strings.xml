@@ -133,4 +133,15 @@
     <!-- Data usage info -->
     <string name="usage_data">verbraucht</string>
 
+    <!-- OmniJaws -->
+    <string name="omnijaws_service_error">Fehler</string>
+    <string name="omnijaws_service_unkown">Keine Wetterdaten</string>
+    <string name="omnijaws_service_error_long">Fehler beim Laden der Wetterdaten</string>
+    <string name="omnijaws_service_disabled">Dienst deaktiviert</string>
+    <string name="omnijaws_detail_header">Wetter</string>
+    <string name="omnijaws_label_default">Wetter</string>
+    <string name="omnijaws_current_text">Jetzt</string>
+    <string name="omnijaws_package_not_available">OmniJaws nicht verfügbar</string>
+    <string name="omnijaws_service_last_update">Letzte Aktualisierung:</string>
+
 </resources>
