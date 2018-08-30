@@ -258,7 +258,7 @@ public class QSFactoryImpl implements QSFactory {
             case "killapp":
                 return mKillappTileProvider.get();
             case "weather":
-                return mWeatherTile.get();
+                return mWeatherTileProvider.get();
         }
 
         // Custom tiles
