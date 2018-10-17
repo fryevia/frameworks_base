@@ -42,6 +42,7 @@ import android.os.UserHandle;
 import android.view.IWindowManager;
 import android.view.WindowManagerGlobal;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 
 import com.android.internal.R;
@@ -55,6 +56,7 @@ public class derpUtils {
     public static final String INTENT_REGION_SCREENSHOT = "action_handler_region_screenshot";
 
     private static OverlayManager mOverlayService;
+    private static final String TAG = "derpUtils";
 
     public static boolean isPackageInstalled(Context context, String pkg, boolean ignoreState) {
         if (pkg != null) {
@@ -258,5 +260,33 @@ public class derpUtils {
         final TypedValue value = new TypedValue ();
         context.getTheme ().resolveAttribute (android.R.attr.colorAccent, value, true);
         return value.data;
+    }
+
+    // Switches qs tile style to user selected.
+    public static void updateTileStyle(IOverlayManager om, int userId, int qsTileStyle) {
+        if (qsTileStyle == 0) {
+            stockTileStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(ThemesUtils.QS_TILE_THEMES[qsTileStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change qs tile icon", e);
+            }
+        }
+    }
+
+    // Switches qs tile style back to stock.
+    public static void stockTileStyle(IOverlayManager om, int userId) {
+        // skip index 0
+        for (int i = 0; i < ThemesUtils.QS_TILE_THEMES.length; i++) {
+            String qstiletheme = ThemesUtils.QS_TILE_THEMES[i];
+            try {
+                om.setEnabled(qstiletheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
