@@ -438,6 +438,13 @@ public class BatteryMeterView extends LinearLayout implements
         scaleBatteryMeterViews();
     }
 
+    @Override
+    public void onOverlayChanged() {
+        mShowPercentAvailable = getContext().getResources().getBoolean(
+                com.android.internal.R.bool.config_battery_percentage_setting_available);
+        updateShowPercent(false);
+    }
+
     private Drawable getUnknownStateDrawable() {
         if (mUnknownStateDrawable == null) {
             mUnknownStateDrawable = mContext.getDrawable(R.drawable.ic_battery_unknown);
