@@ -130,4 +130,7 @@
     <!-- Screen recorder framerate limit -->
     <java-symbol type="integer" name="config_screenRecorderMaxFramerate" />
 
+    <!-- Toast animation -->
+    <java-symbol type="style" name="Animation.Toast.Material" />
+
 </resources>
