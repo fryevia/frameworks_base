@@ -45,4 +45,7 @@
         <item>restart</item>
         <item>screenshot</item> <!--2 buttons nav-->
     </string-array>
+
+    <!-- Whether or not we should show vendor mismatch message -->
+    <bool name="config_show_vendor_mismatch_message">true</bool>
 </resources>
