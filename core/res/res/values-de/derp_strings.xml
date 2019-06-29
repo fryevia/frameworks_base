@@ -32,4 +32,10 @@
     <string name="aerr_disable">App deaktivieren</string>
     <!-- Cycle through ringer modes -->
     <string name="volume_dialog_ringer_guidance_normal">Anrufe und Benachrichtigungen klingeln</string>
+    <!-- Gaming mode -->
+    <string name="notification_channel_gaming">Gaming-Modus</string>
+    <string name="gaming_mode_notification_title">Gaming-Modus aktiviert</string>
+    <string name="gaming_mode_notification_content">Tippen Sie, um den Gaming-Modus zu deaktivieren</string>
+    <string name="gaming_mode_enabled_toast">Gaming-Modus aktiviert</string>
+    <string name="gaming_mode_disabled_toast">Gaming-Modus deaktiviert</string>
 </resources>
