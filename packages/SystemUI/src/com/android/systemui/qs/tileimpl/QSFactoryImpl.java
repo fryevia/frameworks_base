@@ -68,6 +68,7 @@ import com.android.systemui.qs.tiles.UsbTetherTile;
 import com.android.systemui.qs.tiles.UserTile;
 import com.android.systemui.qs.tiles.WeatherTile;
 import com.android.systemui.qs.tiles.VolumeTile;
+import com.android.systemui.qs.tiles.VpnTile;
 import com.android.systemui.qs.tiles.WifiTile;
 import com.android.systemui.qs.tiles.WorkModeTile;
 import com.android.systemui.util.leak.GarbageMonitor;
@@ -129,6 +130,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<LocaleTile> mLocaleTileProvider;
     private final Provider<PowerMenuTile> mPowerMenuTileProvider;
     private final Provider<VolumeTile> mVolumeTileProvider;
+    private final Provider<VpnTile> mVpnTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
 
@@ -177,7 +179,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<CompassTile> compassTileProvider,
             Provider<LocaleTile> localeTileProvider,
             Provider<PowerMenuTile> powerMenuTileProvider,
-            Provider<VolumeTile> volumeTileProvider) {
+            Provider<VolumeTile> volumeTileProvider,
+            Provider<VpnTile> vpnTileProvider) {
         mQsHostLazy = qsHostLazy;
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
@@ -225,6 +228,7 @@ public class QSFactoryImpl implements QSFactory {
         mLocaleTileProvider = localeTileProvider;
         mPowerMenuTileProvider = powerMenuTileProvider;
         mVolumeTileProvider = volumeTileProvider;
+        mVpnTileProvider = vpnTileProvider;
     }
 
     public QSTile createTile(String tileSpec) {
@@ -325,6 +329,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mPowerMenuTileProvider.get();
             case "volume_panel":
                 return mVolumeTileProvider.get();
+            case "vpn":
+                return mVpnTileProvider.get();
         }
 
         // Custom tiles
