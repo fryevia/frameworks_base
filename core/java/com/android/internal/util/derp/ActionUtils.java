@@ -137,7 +137,8 @@ public class ActionUtils {
     public static void takeScreenshot(boolean full) {
         IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
         try {
-            wm.sendCustomAction(new Intent(full? INTENT_SCREENSHOT : INTENT_REGION_SCREENSHOT));
+//            wm.sendCustomAction(new Intent(full? INTENT_SCREENSHOT : INTENT_REGION_SCREENSHOT));
+            wm.takeAlternativeScreenshot();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
