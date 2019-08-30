@@ -674,6 +674,9 @@
     <!-- IMS Status -->
     <protected-broadcast android:name="android.intent.action.IMS_REGISTRATION_CHANGED" />
 
+    <!-- Used to get camera status. -->
+    <protected-broadcast android:name="android.intent.action.CAMERA_STATUS_CHANGED" />
+
     <!-- ====================================================================== -->
     <!--                          RUNTIME PERMISSIONS                           -->
     <!-- ====================================================================== -->

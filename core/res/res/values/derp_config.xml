@@ -143,4 +143,7 @@
     <!-- Default value for FOD animation package resources -->
     <string name="config_fodAnimationPackage" translatable="false">com.derp.fod.animations</string>
 
+    <!-- Whether to send camera status intent -->
+    <bool name="config_sendCameraStatusIntent">false</bool>
+
 </resources>
