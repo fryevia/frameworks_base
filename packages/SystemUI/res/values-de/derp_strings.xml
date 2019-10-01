@@ -77,4 +77,9 @@
     <!-- Biometric Dialog - Use Face -->
     <string name="biometric_dialog_button_use_face">Gesicht verwenden</string>
 
+    <!-- Tuner items -->
+    <string name="status_bar_data_saver">Datensparmodus</string>
+    <string name="status_bar_vpn">VPN</string>
+    <string name="status_bar_roaming">Roaming</string>
+
 </resources>
