@@ -138,24 +138,51 @@
     <string name="clock_title_default" msgid="6342735240617459864">"Standard"</string>
     <string name="clock_title_bubble" msgid="2204559396790593213">"Bubble"</string>
     <string name="clock_title_analog" msgid="8409262532900918273">"Analog"</string>
+    <string name="clock_title_type">Typografisch</string>
     <plurals name="type_clock_header" formatted="false" msgid="6782840450655632763">
       <item quantity="other">"<annotation name="color">"Es ist"</annotation>\n"^1\n^2</item>
       <item quantity="one">"<annotation name="color">"Es ist"</annotation>\n"^1\n^2</item>
     </plurals>
-  <string-array name="type_clock_hours">
-    <item msgid="3543074812389379830">"zwölf Uhr"</item>
-    <item msgid="7389464214252023751">"ein Uhr"</item>
-    <item msgid="8803180377002008046">"zwei Uhr"</item>
-    <item msgid="8614897059944644719">"drei Uhr"</item>
-    <item msgid="2293058674782619556">"vier Uhr"</item>
-    <item msgid="4815402358455041664">"fünf Uhr"</item>
-    <item msgid="3325754778509665687">"sechs Uhr"</item>
-    <item msgid="5805551341866280575">"sieben Uhr"</item>
-    <item msgid="203334816668238610">"acht Uhr"</item>
-    <item msgid="4828052671464488923">"neun Uhr"</item>
-    <item msgid="2233497913571137419">"zehn Uhr"</item>
-    <item msgid="5621554266768657830">"elf Uhr"</item>
+  <string-array name="type_clock_hours_12">
+    <item msgid="3543074812389379830">"Zwölf Uhr"</item>
+    <item msgid="7389464214252023751">"Ein Uhr"</item>
+    <item msgid="8803180377002008046">"Zwei Uhr"</item>
+    <item msgid="8614897059944644719">"Drei Uhr"</item>
+    <item msgid="2293058674782619556">"Vier Uhr"</item>
+    <item msgid="4815402358455041664">"Fünf Uhr"</item>
+    <item msgid="3325754778509665687">"Sechs Uhr"</item>
+    <item msgid="5805551341866280575">"Sieben Uhr"</item>
+    <item msgid="203334816668238610">"Acht Uhr"</item>
+    <item msgid="4828052671464488923">"Neun Uhr"</item>
+    <item msgid="2233497913571137419">"Zehn Uhr"</item>
+    <item msgid="5621554266768657830">"Elf Uhr"</item>
   </string-array>
+  <string-array name="type_clock_hours_24">
+    <item>Null Uhr</item>
+    <item>Ein Uhr</item>
+    <item>Zwei Uhr</item>
+    <item>Drei Uhr</item>
+    <item>Vier Uhr</item>
+    <item>Fünf Uhr</item>
+    <item>Sechs Uhr</item>
+    <item>Sieben Uhr</item>
+    <item>Acht Uhr</item>
+    <item>Neun Uhr</item>
+    <item>Zehn Uhr</item>
+    <item>Elf Uhr</item>
+    <item>Zwölf Uhr</item>
+    <item>Dreizehn Uhr</item>
+    <item>Vierzehn Uhr</item>
+    <item>Fünfzehn Uhr</item>
+    <item>Sechzehn Uhr</item>
+    <item>Siebzehn Uhr</item>
+    <item>Achtzehn Uhr</item>
+    <item>Neunzehn Uhr</item>
+    <item>Zwanzig Uhr</item>
+    <item>Einundzwanzig Uhr</item>
+    <item>Zweiundzwanzig Uhr</item>
+    <item>Dreiundzwanzig Uhr</item>
+    </string-array>
   <string-array name="type_clock_minutes">
     <item msgid="8322049385467207985"></item>
     <item msgid="2091812961809760681">"Eins"</item>
