@@ -5276,6 +5276,13 @@ public final class Settings {
         public static final String LOCK_CLOCK_FONT_STYLE = "lock_clock_font_style";
 
         /**
+         * Change fonts for the system lockscreen date
+         *
+         * @hide
+         */
+        public static final String LOCK_DATE_FONTS = "lock_date_fonts";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
