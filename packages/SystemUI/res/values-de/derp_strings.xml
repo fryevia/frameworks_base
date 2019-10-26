@@ -104,7 +104,8 @@
 
     <!-- Screenshot QS tile -->
     <string name="quick_settings_screenshot_label">Screenshot</string>
-    <string name="quick_settings_region_screenshot_label">Teil-Screenshot</string>
+    <string name="quick_settings_full_screenshot_label">Vollständig</string>
+    <string name="quick_settings_region_screenshot_label">Teilweise</string>
 
     <string name="screenrecord_stopdot_label">Punkt anzeigen, um die Aufnahme zu beenden</string>
     <string name="screenrecord_lowquality_label">Geringere Aufnahmequalität</string>
