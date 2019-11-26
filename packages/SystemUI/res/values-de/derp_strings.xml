@@ -35,4 +35,11 @@
     <string name="accessibility_quick_settings_caffeine_off">Koffein aus</string>
     <string name="accessibility_quick_settings_caffeine_on">Koffein ein</string>
 
+    <!-- DataSwitch Tile -->
+    <string name="qs_data_switch_label">Datenkarte wechseln</string>
+    <string name="qs_data_switch_toast_0">Derzeit ist keine SIM-Karte eingelegt</string>
+    <string name="qs_data_switch_toast_1">Derzeit ist nur eine SIM-Karte eingelegt</string>
+    <string name="qs_data_switch_changed_1">Datenkarte auf SIM 1 umschalten.</string>
+    <string name="qs_data_switch_changed_2">Datenkarte auf SIM 2 umschalten.</string>
+
 </resources>
