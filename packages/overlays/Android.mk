@@ -69,6 +69,7 @@ LOCAL_REQUIRED_MODULES := \
 	IconShapePebbleOverlay \
 	IconShapeCircleOverlay \
 	IconShapeRoundedRectOverlay \
+	IconShapeSquareOverlay \
 	IconShapeSquircleOverlay \
 	IconShapeTaperedRectOverlay \
 	IconShapeTeardropOverlay \
