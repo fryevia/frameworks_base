@@ -31,6 +31,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -50,6 +51,7 @@ import com.android.keyguard.KeyguardViewController;
 import com.android.keyguard.ViewMediatorCallback;
 import com.android.settingslib.animation.AppearAnimationUtils;
 import com.android.systemui.DejankUtils;
+import com.android.systemui.Dependency;
 import com.android.systemui.SystemUIFactory;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.keyguard.DismissCallbackRegistry;
@@ -104,9 +106,12 @@ public class StatusBarKeyguardViewManager implements RemoteInputController.Callb
 
     private static String TAG = "StatusBarKeyguardViewManager";
 
+    private static final String LOCKSCREEN_LOCK_ICON =
+            "system:" + Settings.System.LOCKSCREEN_LOCK_ICON;
     private static final String LOCKSCREEN_BLUR =
             "system:" + Settings.System.LOCKSCREEN_BLUR;
 
+    private boolean mLockIcon;
     private float mLockScreenBlur;
 
     protected final Context mContext;
@@ -282,12 +287,17 @@ public class StatusBarKeyguardViewManager implements RemoteInputController.Callb
             mDockManager.addListener(mDockEventListener);
             mIsDocked = mDockManager.isDocked();
         }
+        mTunerService.addTunable(this, LOCKSCREEN_LOCK_ICON);
         mTunerService.addTunable(this, LOCKSCREEN_BLUR);
     }
 
     @Override
     public void onTuningChanged(String key, String newValue) {
         switch (key) {
+            case LOCKSCREEN_LOCK_ICON:
+                mLockIcon =
+                    TunerService.parseIntegerSwitch(newValue, true);
+                break;
             case LOCKSCREEN_BLUR:
                 mLockScreenBlur =
                     (float) TunerService.parseInteger(newValue, 0) / 100f;
@@ -912,7 +922,7 @@ public class StatusBarKeyguardViewManager implements RemoteInputController.Callb
             updateNavigationBarVisibility(navBarVisible);
         }
 
-        mLockIconContainer.setVisibility((mLastLockVisible && mDozing)
+        mLockIconContainer.setVisibility(!mLockIcon || (mLastLockVisible && mDozing)
                  ? View.GONE : View.VISIBLE);
 
         if (bouncerShowing != mLastBouncerShowing || mFirstUpdate) {
