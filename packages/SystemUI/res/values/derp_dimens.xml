@@ -17,4 +17,7 @@
 -->
 <resources>
 
+    <!-- Padding after battery level text in status bar, QS, and Keyguard -->
+    <dimen name="battery_level_padding_end">2dp</dimen>
+
 </resources>
