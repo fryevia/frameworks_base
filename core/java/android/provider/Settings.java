@@ -5114,6 +5114,12 @@ public final class Settings {
         public static final String AMBIENT_LIGHT_PULSE_FOR_ALL = "ambient_light_pulse_for_all";
 
         /**
+         * Ambient Edge Light Layout
+         * @hide
+         */
+        public static final String AMBIENT_LIGHT_LAYOUT = "ambient_light_layout";
+
+        /**
          * Direction of repeat animations of Ambient edge light
          * 0 is restart
          * 1 is reverse
