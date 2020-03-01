@@ -33,6 +33,7 @@
     <!-- AOD QS tile -->
     <string name="quick_settings_aod_on_charge_label">AOD beim Laden</string>
     <string name="quick_settings_aod_off_label">AOD deaktiviert</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD deaktiviert\nEnergiesparmodus</string>
 
     <!-- Caffeine tile -->
     <string name="quick_settings_caffeine_label">Koffein</string>
