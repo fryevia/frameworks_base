@@ -24,6 +24,7 @@ import com.android.systemui.statusbar.notification.interruption.BypassHeadsUpNot
 import com.android.systemui.plugins.FalsingManager;
 import com.android.systemui.broadcast.BroadcastDispatcher;
 import com.android.systemui.statusbar.policy.RemoteInputQuickSettingsDisabler;
+import com.android.systemui.statusbar.policy.TaskHelper;
 import com.android.systemui.statusbar.notification.row.NotificationGutsManager;
 import com.android.systemui.statusbar.NotificationRemoteInputManager;
 import com.android.systemui.statusbar.notification.logging.NotificationLogger;
@@ -165,6 +166,7 @@ public class StatusBarGoogle extends StatusBar {
             Optional<Divider> dividerOptional,
             LightsOutNotifController lightsOutNotifController,
             FlashlightController flashlightController,
+            TaskHelper taskHelper,
             StatusBarNotificationActivityStarter.Builder
                     statusBarNotificationActivityStarterBuilder,
             ShadeController shadeController,
@@ -245,6 +247,7 @@ public class StatusBarGoogle extends StatusBar {
             dividerOptional,
             lightsOutNotifController,
             flashlightController,
+            taskHelper,
             statusBarNotificationActivityStarterBuilder,
             shadeController,
             superStatusBarViewFactory,
