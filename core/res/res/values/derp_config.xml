@@ -65,7 +65,10 @@
     <bool name="config_hasVoocCharger">false</bool>
 	
     <!-- The list of vendor package signatures that should also be considered
-          platform signatures, specifically for use on devices with a vendor partition. -->
+         platform signatures, specifically for use on devices with a vendor partition. -->
     <string-array name="config_vendorPlatformSignatures">
     </string-array>
+
+    <!-- Enable face auth only when swiping security view -->
+    <bool name="config_faceAuthOnlyOnSecurityView">false</bool>
 </resources>
