@@ -22,4 +22,6 @@
 
     <dimen name="ide_clock_font_size">14sp</dimen>
 
+    <!-- Custom clock outline size -->
+    <dimen name="clock_oronos_outline_size">4dp</dimen>
 </resources>

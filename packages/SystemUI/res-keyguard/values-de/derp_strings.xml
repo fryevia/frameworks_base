@@ -20,4 +20,5 @@
     <string name="clock_title_samsung">Samsung</string>
     <string name="clock_title_samsung_bold">Samsung (fett)</string>
     <string name="clock_title_samsung_accent">Samsung (farbig)</string>
+    <string name="date_long_title_today">Heute ist %s</string>
 </resources>
