@@ -155,8 +155,11 @@
     <java-symbol type="string" name="gaming_mode_enabled_toast" />
     <java-symbol type="string" name="gaming_mode_disabled_toast" />
 
-    <!-- Light / Regular style fonts -->
+    <!-- Fonts -->
     <java-symbol type="string" name="config_lightFontFamily" />
     <java-symbol type="string" name="config_regularFontFamily" />
+    <java-symbol type="string" name="config_headlineFontFamilyMedium" />
+    <java-symbol type="string" name="config_bodyFontFamily" />
+    <java-symbol type="string" name="config_bodyFontFamilyMedium" />
 
 </resources>
