@@ -85,6 +85,9 @@
     <string name="status_bar_data_saver">Datensparmodus</string>
     <string name="status_bar_vpn">VPN</string>
     <string name="status_bar_roaming">Roaming</string>
+    <string name="status_bar_camera">Kamera</string>
+    <string name="status_bar_location">Standort</string>
+    <string name="status_bar_microphone">Mikrofon</string>
 
     <!-- Sound QS Tile -->
     <string name="quick_settings_sound_label">Töne</string>
