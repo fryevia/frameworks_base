@@ -147,4 +147,12 @@
     <string name="omnijaws_package_not_available">OmniJaws nicht verfügbar</string>
     <string name="omnijaws_service_last_update">Letzte Aktualisierung:</string>
 
+    <!-- App Lock -->
+    <string name="applock_locked">&#160;ist gesperrt</string>
+    <string name="applock_fingerprint_face">, Fingerabdruck oder Ihr Gesicht zum Entsperren</string>
+    <string name="applock_face">&#160;oder Ihr Gesicht zum Entsperren</string>
+    <string name="applock_fingerprint">&#160;oder Ihren Fingerabdruck zum Entsperren</string>
+    <string name="applock_credential">&#160;zum Entsperren</string>
+    <string name="applock_unlock">Entsperren</string>
+
 </resources>
