@@ -5407,6 +5407,12 @@ public final class Settings {
         public static final String BATTERY_BAR_ANIMATE = "battery_bar_animate";
 
         /**
+         * Battery bar charging animation color
+         * @hide
+         */
+        public static final String BATTERY_BAR_ANIMATE_COLOR = "battery_bar_animate_color";
+
+        /**
          * @hide
          */
         public static final String BATTERY_BAR_CHARGING_COLOR = "battery_bar_charging_color";

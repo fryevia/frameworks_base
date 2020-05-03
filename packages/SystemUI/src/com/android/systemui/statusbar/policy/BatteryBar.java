@@ -46,6 +46,7 @@ public class BatteryBar extends RelativeLayout implements Animatable {
 
     private int mLowColor = 0xFFFF4400;
     private int mHighColor = 0xFF99CC00;
+    private int mChargingAnimColor = 0xFFFF2200;
     private int mAnimOffset;
     GradientDrawable mBarGradient;
     int[] mGradientColors;
@@ -78,6 +79,8 @@ public class BatteryBar extends RelativeLayout implements Animatable {
                     Settings.System.BATTERY_BAR_COLOR), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.BATTERY_BAR_ANIMATE), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.BATTERY_BAR_ANIMATE_COLOR), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.BATTERY_BAR_CHARGING_COLOR), false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -224,6 +227,9 @@ public class BatteryBar extends RelativeLayout implements Animatable {
 
         shouldAnimateCharging = Settings.System.getIntForUser(resolver,
                 Settings.System.BATTERY_BAR_ANIMATE, 0, UserHandle.USER_CURRENT) == 1;
+
+        mChargingAnimColor = Settings.System.getIntForUser(resolver,
+                Settings.System.BATTERY_BAR_ANIMATE_COLOR, 0xFFFF2200, UserHandle.USER_CURRENT);
 
         mLowColor = Settings.System.getIntForUser(resolver,
                 Settings.System.BATTERY_BAR_LOW_COLOR,
