@@ -153,6 +153,7 @@ public final class ClockManager {
         addBuiltinClock(() -> new BubbleClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new AnalogClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new TypeClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new TypeClockCenteredController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new IDEClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new DividedLinesClockController(res, layoutInflater, colorExtractor));
 
