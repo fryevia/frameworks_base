@@ -42,6 +42,7 @@ import android.os.UserHandle;
 import android.view.IWindowManager;
 import android.view.WindowManagerGlobal;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 
 import com.android.internal.R;
 
@@ -251,5 +252,11 @@ public class derpUtils {
                 throws RemoteException {
             return mService.getOverlayInfosForTarget(target, userId);
         }
+    }
+
+    public static int getThemeAccentColor (final Context context) {
+        final TypedValue value = new TypedValue ();
+        context.getTheme ().resolveAttribute (android.R.attr.colorAccent, value, true);
+        return value.data;
     }
 }
