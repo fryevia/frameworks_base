@@ -46,6 +46,7 @@ public class DescendantSeamlessClockSwitch {
         "com.android.keyguard.clock.SamsungClockController",
         "com.android.keyguard.clock.SamsungBoldClockController",
         "com.android.keyguard.clock.SamsungHighlightClockController",
+        "com.android.keyguard.clock.SammyClockController",
         "com.android.keyguard.clock.SfunyClockController",
         "com.android.keyguard.clock.StickerTagClockController"
     };
