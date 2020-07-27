@@ -30,4 +30,6 @@
     <string name="system_error_vendorprint">Das verwendete Vendor-Image stimmt nicht mit dem des Stand des Systems überein. Bitte das <xliff:g id="string">%s</xliff:g> Vendor-Image für ihr Gerät flashen.</string>
     <!-- Aerr strings -->
     <string name="aerr_disable">App deaktivieren</string>
+    <!-- Cycle through ringer modes -->
+    <string name="volume_dialog_ringer_guidance_normal">Anrufe und Benachrichtigungen klingeln</string>
 </resources>
