@@ -4814,6 +4814,9 @@ public final class Settings {
          */
         public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";
 
+        /** @hide */
+        public static final String BACK_GESTURE_HAPTIC = "back_gesture_haptic";
+
         /**
          * Whether to show Fahrenheit or Celsius with battery info on the
          * lockscreen while charging
@@ -4949,6 +4952,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(SHOW_BATTERY_PERCENT);
             PRIVATE_SETTINGS.add(DISPLAY_COLOR_MODE);
             PRIVATE_SETTINGS.add(LOCKSCREEN_PIN_SCRAMBLE_LAYOUT);
+            PRIVATE_SETTINGS.add(BACK_GESTURE_HAPTIC);
         }
 
         /**
