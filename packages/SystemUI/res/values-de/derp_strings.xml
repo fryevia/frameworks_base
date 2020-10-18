@@ -56,4 +56,10 @@
     <string name="accessibility_quick_settings_sync_changed_off">Synchronisierung ist ausgeschaltet.</string>
     <string name="accessibility_quick_settings_sync_changed_on">Synchronisierung ist eingeschaltet.</string>
 
+    <!-- Power Menu -->
+    <string name="global_action_restart_advanced">Erweitert</string>
+    <string name="global_action_restart_recovery">Wiederherstellung</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_ui">System UI</string>
+
 </resources>
