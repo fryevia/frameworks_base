@@ -17,10 +17,14 @@
 */
 package com.android.systemui.omni;
 
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -40,6 +44,7 @@ import com.android.systemui.R;
 public class NotificationLightsView extends RelativeLayout {
     private static final boolean DEBUG = false;
     private static final String TAG = "NotificationLightsView";
+    private static final String CANCEL_NOTIFICATION_PULSE_ACTION = "cancel_notification_pulse";
     private ValueAnimator mLightAnimator;
 
     public NotificationLightsView(Context context) {
@@ -106,6 +111,25 @@ public class NotificationLightsView extends RelativeLayout {
         mLightAnimator.setRepeatCount(repeats == 0 ?
                 ValueAnimator.INFINITE : repeats);
         mLightAnimator.setRepeatMode(ValueAnimator.RESTART);
+        if (repeats != 0) {
+            mLightAnimator.addListener(new AnimatorListener() {
+                @Override
+                public void onAnimationCancel(Animator animation) { /* do nothing */ }
+                @Override
+                public void onAnimationRepeat(Animator animation) { /* do nothing */ }
+                @Override
+                public void onAnimationStart(Animator animation) { /* do nothing */ }
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    Settings.System.putIntForUser(resolver,
+                            Settings.System.AOD_NOTIFICATION_PULSE_ACTIVATED, 0,
+                            UserHandle.USER_CURRENT);
+                    Settings.System.putIntForUser(resolver,
+                            Settings.System.AOD_NOTIFICATION_PULSE_TRIGGER, 0,
+                            UserHandle.USER_CURRENT);
+                }
+            });
+        }
         mLightAnimator.addUpdateListener(new AnimatorUpdateListener() {
             public void onAnimationUpdate(ValueAnimator animation) {
                 if (DEBUG) Log.d(TAG, "onAnimationUpdate");
