@@ -5949,6 +5949,10 @@ public final class Settings {
          */
         public static final String FORCE_FULLSCREEN_CUTOUT_APPS = "force_full_screen_cutout_apps";
 
+        /** reTicker **/
+        public static final String RETICKER_STATUS = "reticker_status";
+        public static final String RETICKER_COLORED = "reticker_colored";
+
         /**
          * Control how to handle the display cutout
          * @hide
