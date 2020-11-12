@@ -114,4 +114,7 @@
 
     <!-- Rotation sensor -->
     <java-symbol type="bool" name="config_useSystemClockforRotationSensor" />
+
+    <!-- Aerr -->
+    <java-symbol type="id" name="aerr_disable" />
 </resources>
