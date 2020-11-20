@@ -80,6 +80,8 @@
     <integer name="config_maxVisibleNotificationIcons">4</integer>
     <integer name="config_maxVisibleNotificationIconsOnLock">5</integer>
 
+    <!-- Does the device support battery LED? -->
+    <bool name="config_intrusiveBatteryLed">false</bool>
     <!-- Does the battery LED support multiple colors?
          Used to decide if the user can change the colors -->
     <bool name="config_multiColorBatteryLed">false</bool>
