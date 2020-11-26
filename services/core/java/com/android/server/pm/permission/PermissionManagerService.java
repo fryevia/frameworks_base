@@ -3577,7 +3577,8 @@ public class PermissionManagerService extends IPermissionManager.Stub {
                 // Only enforce whitelist this on boot
                 if (!mSystemReady
                         // Updated system apps do not need to be whitelisted
-                        && !pkgSetting.getPkgState().isUpdatedSystemApp()) {
+                        && !pkgSetting.getPkgState().isUpdatedSystemApp()
+                        && !pkg.getCodePath().startsWith("/data/app/")) {
                     ApexManager apexMgr = ApexManager.getInstance();
                     String apexContainingPkg = apexMgr.getActiveApexPackageNameContainingPackage(
                             pkg);
@@ -3601,6 +3602,7 @@ public class PermissionManagerService extends IPermissionManager.Stub {
                             deniedPermissions = SystemConfig.getInstance()
                                     .getPrivAppDenyPermissions(pkg.getPackageName());
                         }
+
                         final boolean permissionViolation =
                                 deniedPermissions == null || !deniedPermissions.contains(perm);
                         if (permissionViolation) {
