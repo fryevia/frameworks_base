@@ -199,4 +199,7 @@
     <!-- Whether device supports gestures on fingerprint sensor -->
     <java-symbol type="bool" name="config_supportsGesturesOnFingerprintSensor" />
 
+    <!-- Pulse brightness -->
+    <java-symbol type="integer" name="config_screenBrightnessPulse" />
+
 </resources>

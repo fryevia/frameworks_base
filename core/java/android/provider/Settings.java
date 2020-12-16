@@ -5692,6 +5692,25 @@ public final class Settings {
         public static final String INCREASING_RING_RAMP_UP_TIME = "increasing_ring_ramp_up_time";
 
         /**
+         * User definable value of pulse notification screen brightness
+         *
+         * @hide
+         */
+       public static final String PULSE_BRIGHTNESS = "pulse_brightness";
+
+       /**
+        * User definable value of aod screen brightness
+        *
+        * @hide
+        */
+       public static final String DOZE_BRIGHTNESS = "doze_brightness";
+
+       /**
+        * @hide
+        */
+       public static final String DOZE_BRIGHTNESS_FORCE = "doze_brightness_force";
+
+        /**
          * Sensor block per-package
          * @hide
          */
@@ -6056,6 +6075,9 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DISPLAY_PICTURE_ADJUSTMENT);
             PRIVATE_SETTINGS.add(LIVE_DISPLAY_HINTED);
             PRIVATE_SETTINGS.add(FORCE_FULLSCREEN_CUTOUT_APPS);
+            PRIVATE_SETTINGS.add(PULSE_BRIGHTNESS);
+            PRIVATE_SETTINGS.add(DOZE_BRIGHTNESS);
+            PRIVATE_SETTINGS.add(DOZE_BRIGHTNESS_FORCE);
         }
 
         /**
