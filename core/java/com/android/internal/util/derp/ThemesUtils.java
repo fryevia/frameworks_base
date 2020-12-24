@@ -43,4 +43,15 @@ public class ThemesUtils {
             "com.bootleggers.qstile.pureaccent"
     };
 
+    public static final String[] STATUSBAR_HEIGHT = {
+            "com.gnonymous.gvisualmod.sbh_m", // 1
+            "com.gnonymous.gvisualmod.sbh_l", // 2
+            "com.gnonymous.gvisualmod.sbh_xl", // 3
+    };
+
+    public static final String[] UI_RADIUS = {
+            "com.gnonymous.gvisualmod.urm_r", // 1
+            "com.gnonymous.gvisualmod.urm_m", // 2
+            "com.gnonymous.gvisualmod.urm_l", // 3
+    };
 }
