@@ -17,6 +17,7 @@
 package com.android.internal.util.derp;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -58,6 +59,11 @@ public class derpUtils {
 
     private static OverlayManager mOverlayService;
     private static final String TAG = "derpUtils";
+
+    private static boolean mBlurSupportedSysProp = SystemProperties
+            .getBoolean("ro.surface_flinger.supports_background_blur", false);
+    private static boolean mBlurDisabledSysProp = SystemProperties
+            .getBoolean("persist.sys.sf.disable_blurs", false);
 
     public static boolean isPackageInstalled(Context context, String pkg, boolean ignoreState) {
         if (pkg != null) {
@@ -294,5 +300,14 @@ public class derpUtils {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * If this device can render blurs.
+     *
+     * @return {@code true} when supported.
+     */
+    public static boolean supportsBlur() {
+        return mBlurSupportedSysProp && !mBlurDisabledSysProp && ActivityManager.isHighEndGfx();
     }
 }
