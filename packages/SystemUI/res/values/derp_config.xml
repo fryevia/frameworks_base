@@ -41,4 +41,7 @@
          This allows for the first block in PathEffect to fade -->
     <integer name="config_pulseDbFuzz">2</integer>
 
+    <!-- Color of the FOD view -->
+    <color name="config_fodColorBackground">#20000000</color>
+
 </resources>
