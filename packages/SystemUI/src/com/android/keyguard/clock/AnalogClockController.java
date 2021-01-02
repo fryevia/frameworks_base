@@ -25,11 +25,14 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextClock;
+import android.provider.Settings;
+import android.content.Context;
 
 import com.android.internal.colorextraction.ColorExtractor;
 import com.android.systemui.R;
 import com.android.systemui.colorextraction.SysuiColorExtractor;
 import com.android.systemui.plugins.ClockPlugin;
+import com.android.internal.util.derp.derpUtils;
 
 import java.util.TimeZone;
 
@@ -75,6 +78,8 @@ public class AnalogClockController implements ClockPlugin {
     private View mView;
     private TextClock mLockClock;
 
+    private Context mContext;
+
     /**
      * Helper to extract colors from wallpaper palette for clock face.
      */
@@ -88,10 +93,11 @@ public class AnalogClockController implements ClockPlugin {
      * @param colorExtractor Extracts accent color from wallpaper.
      */
     public AnalogClockController(Resources res, LayoutInflater inflater,
-            SysuiColorExtractor colorExtractor) {
+            SysuiColorExtractor colorExtractor, Context context) {
         mResources = res;
         mLayoutInflater = inflater;
         mColorExtractor = colorExtractor;
+        mContext = context;
         mClockPosition = new SmallClockPosition(res);
     }
 
@@ -188,9 +194,15 @@ public class AnalogClockController implements ClockPlugin {
 
     private void updateColor() {
         final int primary = mPalette.getPrimaryColor();
-        final int secondary = mPalette.getSecondaryColor();
-        mLockClock.setTextColor(secondary);
-        mAnalogClock.setClockColors(primary, secondary);
+
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
+            mLockClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+            mAnalogClock.setClockColors(primary, mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+        } else {
+            final int secondary = mPalette.getSecondaryColor();
+            mLockClock.setTextColor(secondary);
+            mAnalogClock.setClockColors(primary, secondary);
+        }
     }
 
     @Override

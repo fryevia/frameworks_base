@@ -19,6 +19,7 @@ package com.android.internal.util.derp;
 import android.Manifest;
 import android.app.ActivityManager;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -40,6 +41,7 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.IWindowManager;
 import android.view.WindowManagerGlobal;
@@ -166,6 +168,12 @@ public class derpUtils {
     public static boolean isChineseLanguage() {
        return Resources.getSystem().getConfiguration().locale.getLanguage().startsWith(
                Locale.CHINESE.getLanguage());
+    }
+
+    // Check for lockscreen accent color
+    public static boolean useLockscreenClockAccentColor(Context context) {
+        return Settings.System.getInt(context.getContentResolver(),
+          Settings.System.LOCKSCREEN_ACCENT_COLOR, 0) == 1;
     }
 
 	// Check if device has a notch

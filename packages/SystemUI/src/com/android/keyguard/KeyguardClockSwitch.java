@@ -33,6 +33,7 @@ import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.colorextraction.ColorExtractor;
 import com.android.internal.colorextraction.ColorExtractor.OnColorsChangedListener;
+import com.android.internal.util.derp.derpUtils;
 import com.android.keyguard.clock.ClockManager;
 import com.android.keyguard.KeyguardSliceView;
 import com.android.systemui.Dependency;
@@ -293,7 +294,11 @@ public class KeyguardClockSwitch extends RelativeLayout {
         // Initialize plugin parameters.
         mClockPlugin = plugin;
         mClockPlugin.setStyle(getPaint().getStyle());
-        mClockPlugin.setTextColor(getCurrentTextColor());
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
+            mClockPlugin.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+        } else {
+            mClockPlugin.setTextColor(getCurrentTextColor());
+        }
         mClockPlugin.setDarkAmount(mDarkAmount);
         mClockPlugin.setHasVisibleNotifications(mHasVisibleNotifications);
         mKeyguardStatusArea.setClockPlugin(mClockPlugin);
@@ -331,10 +336,18 @@ public class KeyguardClockSwitch extends RelativeLayout {
      * It will also update plugin setTextColor if plugin is connected.
      */
     public void setTextColor(int color) {
-        mClockView.setTextColor(color);
-        mClockViewBold.setTextColor(color);
-        if (mClockPlugin != null) {
-            mClockPlugin.setTextColor(color);
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
+            mClockView.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+            mClockViewBold.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+            if (mClockPlugin != null) {
+                mClockPlugin.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+            }
+        } else {
+            mClockView.setTextColor(color);
+            mClockViewBold.setTextColor(color);
+            if (mClockPlugin != null) {
+                mClockPlugin.setTextColor(color);
+            }
         }
     }
 
