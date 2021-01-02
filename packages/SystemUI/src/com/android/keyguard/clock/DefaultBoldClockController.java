@@ -96,8 +96,21 @@ public class DefaultBoldClockController implements ClockPlugin {
         mView = (ClockLayout) mLayoutInflater
                 .inflate(R.layout.digital_clock_custom, null);
         mClock = mView.findViewById(R.id.clock);
-        mClock.setFormat12Hour(Html.fromHtml("<strong>h</strong>:mm"));
-        mClock.setFormat24Hour(Html.fromHtml("<strong>kk</strong>:mm"));
+        int mAccentColor = mContext.getResources().getColor(R.color.lockscreen_clock_accent_color);
+
+        if(derpUtils.useLockscreenClockMinuteAccentColor(mContext) && derpUtils.useLockscreenClockHourAccentColor(mContext)) {
+             mClock.setFormat12Hour(Html.fromHtml("<strong><font color=" + mAccentColor + ">h</font></strong>:<strong><font color=" + mAccentColor + ">mm</font></strong>"));
+             mClock.setFormat24Hour(Html.fromHtml("<strong><font color=" + mAccentColor + ">kk</font></strong>:<strong><font color=" + mAccentColor + ">mm</font></strong>"));
+        } else if(derpUtils.useLockscreenClockHourAccentColor(mContext)) {
+             mClock.setFormat12Hour(Html.fromHtml("<strong><font color=" + mAccentColor + ">h</font></strong>:<strong>mm</strong>"));
+             mClock.setFormat24Hour(Html.fromHtml("<strong><font color=" + mAccentColor + ">kk</font></strong>:<strong>mm</strong>"));
+        } else if(derpUtils.useLockscreenClockMinuteAccentColor(mContext)) {
+             mClock.setFormat12Hour(Html.fromHtml("<strong>h</strong>:<strong><font color=" + mAccentColor + ">mm</font></strong>"));
+             mClock.setFormat24Hour(Html.fromHtml("<strong>kk</strong>:<strong><font color=" + mAccentColor + ">mm</font></strong>"));
+        } else {
+            mClock.setFormat12Hour(Html.fromHtml("<strong>h</strong>:<strong>mm</strong>"));
+            mClock.setFormat24Hour(Html.fromHtml("<strong>kk</strong>:<strong>mm</strong>"));
+        }
     }
 
     @Override
@@ -164,11 +177,6 @@ public class DefaultBoldClockController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
-        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
-            mClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
-        } else {
-            mClock.setTextColor(color);
-        }
     }
 
     @Override

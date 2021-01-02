@@ -195,7 +195,7 @@ public class AnalogClockController implements ClockPlugin {
     private void updateColor() {
         final int primary = mPalette.getPrimaryColor();
 
-        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
+        if(derpUtils.useLockscreenCustomClockAccentColor(mContext)) {
             mLockClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
             mAnalogClock.setClockColors(primary, mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
         } else {

@@ -25,11 +25,13 @@ import android.graphics.Typeface;
 import android.util.MathUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.content.Context;
 
 import com.android.internal.colorextraction.ColorExtractor;
 import com.android.systemui.R;
 import com.android.systemui.colorextraction.SysuiColorExtractor;
 import com.android.systemui.plugins.ClockPlugin;
+import com.android.internal.util.derp.derpUtils;
 
 import java.util.TimeZone;
 
@@ -85,6 +87,8 @@ public class TypeClockCenteredController implements ClockPlugin {
      */
     private CrossFadeDarkController mDarkController;
 
+    private Context mContext;
+
     /**
      * Create a TypeClockCenteredController instance.
      *
@@ -93,10 +97,11 @@ public class TypeClockCenteredController implements ClockPlugin {
      * @param colorExtractor Extracts accent color from wallpaper.
      */
     TypeClockCenteredController(Resources res, LayoutInflater inflater,
-            SysuiColorExtractor colorExtractor) {
+            SysuiColorExtractor colorExtractor, Context context) {
         mResources = res;
         mLayoutInflater = inflater;
         mColorExtractor = colorExtractor;
+        mContext = context;
         mStatusBarHeight = res.getDimensionPixelSize(R.dimen.status_bar_height);
         mKeyguardLockPadding = res.getDimensionPixelSize(R.dimen.keyguard_lock_padding);
         mKeyguardLockHeight = res.getDimensionPixelSize(R.dimen.keyguard_lock_height);
@@ -186,8 +191,13 @@ public class TypeClockCenteredController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
-        mTypeClock.setTextColor(color);
-        mLockClock.setTextColor(color);
+        if(derpUtils.useLockscreenCustomClockAccentColor(mContext)) {
+            mTypeClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+            mLockClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+        } else {
+            mTypeClock.setTextColor(color);
+            mLockClock.setTextColor(color);
+        }
     }
 
     @Override
@@ -205,8 +215,12 @@ public class TypeClockCenteredController implements ClockPlugin {
             return;
         }
         final int color = colorPalette[Math.max(0, colorPalette.length - 5)];
-        mTypeClock.setClockColor(color);
-        mLockClock.setClockColor(color);
+        if(derpUtils.useLockscreenCustomClockAccentColor(mContext)) {
+            mTypeClock.setClockColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+        } else {
+            mTypeClock.setClockColor(color);
+            mLockClock.setClockColor(color);
+        }
     }
 
     @Override

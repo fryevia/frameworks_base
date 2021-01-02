@@ -161,7 +161,7 @@ public class DefaultClockController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
-        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
+        if(derpUtils.useLockscreenCustomClockAccentColor(mContext)) {
             mTextTime.setTextColor((mContext.getResources().getColor(R.color.lockscreen_clock_accent_color)));
         } else {
             mTextTime.setTextColor(color);
