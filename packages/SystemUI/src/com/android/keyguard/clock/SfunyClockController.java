@@ -165,13 +165,17 @@ public class SfunyClockController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
-        if(Utils.useLockscreenClockAccentColor(mContext)) {
-            mLockClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
-            mAnalogClock.setClockColors(primary, mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+        mMinuteClock.setTextColor(Color.WHITE);
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
+            mHourClock.setTextColor((mContext.getResources().getColor(R.color.lockscreen_clock_accent_color)));
         } else {
             mHourClock.setTextColor(color);
-            mMinuteClock.setTextColor(color);
         }
+        // if(derpUtils.useLockscreenClockAccentColor(mContext)) {
+        //     mDate.setTextColor(color);
+        // } else {
+        //     mDate.setTextColor(color);
+        // }
     }
 
     @Override
