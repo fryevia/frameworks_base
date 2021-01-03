@@ -211,4 +211,7 @@
     <string name="quick_settings_locale_label">Sprache</string>
     <string name="quick_settings_locale_more_locales_toast">Bitte konfigurieren Sie mehrere Sprachen, um die Umschaltfunktion zu aktivieren</string>
 
+    <!-- Power menu QS tile -->
+    <string name="quick_settings_power_menu_label">Ein-/Aus-Menü</string>
+
 </resources>
