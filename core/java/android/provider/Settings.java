@@ -5262,11 +5262,6 @@ public final class Settings {
         /**
          * @hide
          */
-        public static final String FORCE_SHOW_NAVBAR = "navbar_visibility";
-
-        /**
-         * @hide
-         */
         public static final String ADVANCED_REBOOT = "advanced_reboot";
 
         /**
