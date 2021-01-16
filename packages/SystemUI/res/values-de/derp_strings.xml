@@ -118,4 +118,7 @@
     <string name="app_picker_dialog_title">App auswählen</string>
     <string name="app_picker_activity_select_title">Aktion wählen</string>
 
+    <!-- Ambient Music Ticker -->
+    <string name="ambientmusic_songinfo" formatted="false">%s von %s</string>
+
 </resources>
