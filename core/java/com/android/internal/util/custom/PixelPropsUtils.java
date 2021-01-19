@@ -40,6 +40,7 @@ public class PixelPropsUtils {
             "com.android.vending",
             "com.google.android.apps.gcs",
             "com.google.android.apps.turbo",
+            "com.google.android.apps.turboadapter",
             "com.google.android.apps.wellbeing",
             "com.google.android.configupdater",
             "com.google.android.gms",
