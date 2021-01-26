@@ -49,11 +49,14 @@ public class PixelPropsUtils {
             "com.google.android.apps.nexuslauncher",
             "com.google.android.gsf",
             "com.google.android.apps.wallpaper",
+            "com.google.android.apps.wallpaper.pixel",
             "com.google.android.onetimeinitializer",
             "com.google.android.pixel.setupwizard",
             "com.google.android.apps.messaging",
             "com.google.android.apps.photos",
-            "com.google.android.apps.maps"
+            "com.google.android.apps.maps",
+            "com.google.pixel.dynamicwallpapers",
+            "com.google.pixel.livewallpaper"
     };
 
     static {
