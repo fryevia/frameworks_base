@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.AnimatedVectorDrawable;
+import android.net.Uri;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -52,9 +54,15 @@ public class PageIndicator extends ViewGroup {
         setNumPages(numPages, color);
     }
 
-    /** Overload of setNumPages that allows the indicator color to be specified.*/
     public void setNumPages(int numPages, int color) {
-        setVisibility(numPages > 1 ? View.VISIBLE : View.GONE);
+        boolean show = Settings.System.getInt(mContext.getContentResolver(),
+              Settings.System.QS_FOOTER_PAGE_INDICATOR, 1) != 0;
+        setNumPages(numPages, color, show);
+    }
+
+    /** Overload of setNumPages that allows the indicator color to be specified.*/
+    public void setNumPages(int numPages, int color, boolean show) {
+        setVisibility(numPages > 1 ? (show ? View.VISIBLE : View.GONE) : View.GONE);
         if (numPages == getChildCount()) {
             return;
         }
