@@ -172,7 +172,11 @@ public class KeyguardStatusView extends GridLayout implements
      * Set whether or not the lock screen is showing notifications.
      */
     public void setHasVisibleNotifications(boolean hasVisibleNotifications) {
-        mClockView.setHasVisibleNotifications(hasVisibleNotifications);
+        boolean showIconsLockScreen = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.AMBIENT_ICONS_LOCKSCREEN,
+                0, UserHandle.USER_CURRENT) != 0;
+        mClockView.setHasVisibleNotifications(hasVisibleNotifications && !showIconsLockScreen);
+        mKeyguardSlice.refresh();
     }
 
     private void setEnableMarquee(boolean enabled) {
