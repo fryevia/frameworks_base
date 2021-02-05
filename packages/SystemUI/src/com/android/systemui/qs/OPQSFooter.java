@@ -24,8 +24,10 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
+import com.android.keyguard.CarrierText;
 import com.android.systemui.R;
 import com.android.systemui.plugins.ActivityStarter;
+import com.android.systemui.statusbar.DataUsageView;
 import com.android.systemui.statusbar.phone.SettingsButton;
 
 public class OPQSFooter extends LinearLayout {
@@ -36,6 +38,8 @@ public class OPQSFooter extends LinearLayout {
     private SettingsButton mSettingsButton;
     private ActivityStarter mActivityStarter;
     private FrameLayout mFooterActions;
+    private DataUsageView mDataUsageView;
+    private CarrierText mCarrierText;
 
     public OPQSFooter(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -47,6 +51,9 @@ public class OPQSFooter extends LinearLayout {
         mEdit = findViewById(R.id.edit);
         mSettingsButton = findViewById(R.id.settings_button);
         mFooterActions = findViewById(R.id.op_qs_footer_actions);
+        mCarrierText = findViewById(R.id.qs_carrier_text);
+        mDataUsageView = findViewById(R.id.data_usage_view);
+        mDataUsageView.setVisibility(View.GONE);
         mFooterAnimator = createFooterAnimator();
     }
 
@@ -57,6 +64,13 @@ public class OPQSFooter extends LinearLayout {
     }
 
     public void setExpanded(boolean expanded) {
+        if (mCarrierText != null && mDataUsageView != null) {
+            mCarrierText.setVisibility(expanded ? View.GONE : View.VISIBLE);
+            mDataUsageView.setVisibility(expanded ? View.VISIBLE : View.GONE);
+            if (expanded) {
+                mDataUsageView.updateUsage();
+            }
+        }
         if (mEdit != null) {
             mEdit.setVisibility(expanded ? View.VISIBLE : View.GONE);
         }
@@ -66,6 +80,7 @@ public class OPQSFooter extends LinearLayout {
     private TouchAnimator createFooterAnimator() {
         return new TouchAnimator.Builder()
                 .addFloat(mEdit, "alpha", 0, 1)
+                .addFloat(mDataUsageView, "alpha", 0, 1)
                 .setStartDelay(0.9f)
                 .build();
     }
