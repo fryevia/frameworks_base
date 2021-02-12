@@ -81,6 +81,7 @@ public class OPQSFooter extends LinearLayout {
         return new TouchAnimator.Builder()
                 .addFloat(mEdit, "alpha", 0, 1)
                 .addFloat(mDataUsageView, "alpha", 0, 1)
+                .addFloat(mCarrierText, "alpha", 1, 1)
                 .setStartDelay(0.9f)
                 .build();
     }
