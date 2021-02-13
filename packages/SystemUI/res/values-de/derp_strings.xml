@@ -90,7 +90,7 @@
     <string name="quick_settings_sound_label">Töne</string>
     <string name="quick_settings_sound_ring">Klingeln</string>
     <string name="quick_settings_sound_vibrate">Vibrieren</string>
-    <string name="quick_settings_sound_dnd">Nicht stören</string>
+    <string name="quick_settings_sound_mute">Stumm</string>
 
     <!-- Partial screenshot -->
     <string name="global_screenshot_selector_capture_description">Teil-Screenshot aufnehmen</string>
