@@ -60,4 +60,8 @@ public class ThemesUtils {
     public static final String NAVBAR_COLOR_ORCD = "com.gnonymous.gvisualmod.pgm_orcd";
 
     public static final String NAVBAR_COLOR_OPRD = "com.gnonymous.gvisualmod.pgm_oprd";
+
+    public static final String NAVBAR_COLOR_BLUE = "com.gnonymous.gvisualmod.pgm_blue";
+
+    public static final String NAVBAR_COLOR_ROSE = "com.gnonymous.gvisualmod.pgm_rose";
 }
