@@ -44,6 +44,7 @@ public class PixelPropsUtils {
             "com.google.android.apps.wellbeing",
             "com.google.android.configupdater",
             "com.google.android.gms",
+            "com.google.android.inputmethod.latin",
             "com.google.android.googlequicksearchbox",
             "com.google.android.settings.intelligence",
             "com.google.android.setupwizard",
