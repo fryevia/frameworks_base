@@ -72,6 +72,10 @@ public static final String TAG = "ThemesUtils";
 
     public static final String NAVBAR_COLOR_ROSE = "com.gnonymous.gvisualmod.pgm_rose";
 
+    public static final String HEADER_LARGE = "com.android.theme.header.large";
+
+    public static final String HEADER_XLARGE = "com.android.theme.header.xlarge";
+
     // Switch themes
     private static final String[] SWITCH_THEMES = {
         "com.android.system.switch.oneplus", // 0
