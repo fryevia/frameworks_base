@@ -74,4 +74,7 @@
     <string name="keyguard_indication_vooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • VOOC-Laden (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> bis voll aufgeladen)</string>
     <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • VOOC-Laden</string>
 
+    <!-- Biometric Dialog - Use Face -->
+    <string name="biometric_dialog_button_use_face">Gesicht verwenden</string>
+
 </resources>
