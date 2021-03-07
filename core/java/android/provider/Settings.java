@@ -4874,12 +4874,6 @@ public final class Settings {
                 "lockscreen_scramble_pin_layout";
 
         /**
-         * Whether to enable SmartSpace
-         * @hide
-         */
-        public static final String SMART_SPACE = "smart_space";
-
-        /**
          * Which Vibration Pattern to use
          * 0: dzzz-dzzz
          * 1: dzzz-da

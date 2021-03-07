@@ -84,7 +84,6 @@ public class SystemSettings {
         Settings.System.DISPLAY_COLOR_MODE,
         Settings.System.ALARM_ALERT,
         Settings.System.NOTIFICATION_LIGHT_PULSE,
-        Settings.System.SMART_SPACE,
         Settings.System.RINGTONE_VIBRATION_PATTERN,
         Settings.System.PROXIMITY_ON_WAKE,
         Settings.System.VIBRATE_ON_CONNECT,
