@@ -94,7 +94,6 @@ import com.android.systemui.statusbar.policy.UserSwitcherController;
 import com.android.systemui.volume.VolumeComponent;
 
 import com.google.android.systemui.NotificationLockscreenUserManagerGoogle;
-import com.google.android.systemui.smartspace.SmartSpaceController;
 
 import dagger.Lazy;
 
@@ -109,11 +108,7 @@ import javax.inject.Inject;
 
 public class StatusBarGoogle extends StatusBar {
 
-    @Inject
-    public SmartSpaceController mSmartSpaceController;
-
     public StatusBarGoogle(
-            SmartSpaceController smartSpaceController,
             Context context,
             NotificationsController notificationsController,
             LightBarController lightBarController,
@@ -280,18 +275,10 @@ public class StatusBarGoogle extends StatusBar {
     @Override
     public void start() {
         super.start();
-        ((NotificationLockscreenUserManagerGoogle) Dependency.get(NotificationLockscreenUserManager.class)).updateSmartSpaceVisibilitySettings();
     }
 
     @Override
     public void setLockscreenUser(int i) {
         super.setLockscreenUser(i);
-        mSmartSpaceController.reloadData();
-    }
-
-    @Override
-    public void dump(FileDescriptor fileDescriptor, PrintWriter printWriter, String[] strArr) {
-        super.dump(fileDescriptor, printWriter, strArr);
-        mSmartSpaceController.dump(fileDescriptor, printWriter, strArr);
     }
 }
