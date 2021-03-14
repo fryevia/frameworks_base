@@ -55,7 +55,10 @@ public class PixelPropsUtils {
             "com.google.android.onetimeinitializer",
             "com.google.android.pixel.setupwizard",
             "com.google.android.apps.messaging",
+            "com.google.android.apps.fitness",
             "com.google.android.apps.photos",
+            "com.google.android.apps.recorder",
+            "com.google.android.apps.tachyon",
             "com.google.android.apps.maps",
             "com.google.pixel.dynamicwallpapers",
             "com.google.pixel.livewallpaper"
