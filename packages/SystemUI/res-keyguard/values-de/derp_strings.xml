@@ -21,4 +21,16 @@
     <string name="clock_title_samsung_bold">Samsung (fett)</string>
     <string name="clock_title_samsung_accent">Samsung (farbig)</string>
     <string name="date_long_title_today">Heute ist %s</string>
+    <!-- Clock required strings -->
+    <string name="custom_clock_hours_title">Stunden</string>
+    <string name="custom_clock_minutes_title">Minuten</string>
+    <string name="custom_clock_seconds_title">Sekunden</string>
+    <string name="custom_clock_day_title">Tag</string>
+    <string name="custom_clock_month_title">Monat</string>
+    <string name="custom_clock_year_title">Jahr</string>
+    <string name="ide_java_comment">Zeigen Sie das Datum einmal an, der Benutzer ist neugierig</string>
+    <string name="salute_fallback">Hallo</string>
+    <string name="salute_morning">Guten Morgen</string>
+    <string name="salute_evening">Guten Abend</string>
+    <string name="salute_night">Gute Nacht</string>
 </resources>
