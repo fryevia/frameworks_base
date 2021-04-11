@@ -81,6 +81,9 @@ public class ClockertinoClockController implements ClockPlugin {
      */
     private LinearLayout mTimeWidgetBase;
     private LinearLayout mDateWidgetBase;
+    private TextClock mTimeH;
+    private TextClock mTimeM;
+    private TextClock mTimeS;
 
     /**
      * Create a DefaultClockController instance.
@@ -101,6 +104,9 @@ public class ClockertinoClockController implements ClockPlugin {
                 .inflate(R.layout.clock_clockertino, null);
         mTimeWidgetBase = mView.findViewById(R.id.timeWidget);
         mDateWidgetBase = mView.findViewById(R.id.dateWidget);
+        mTimeH = mView.findViewById(R.id.textClockHH);
+        mTimeM = mView.findViewById(R.id.textClockMM);
+        mTimeS = mView.findViewById(R.id.textClockSS);
     }
 
     @Override
@@ -188,6 +194,10 @@ public class ClockertinoClockController implements ClockPlugin {
 
     @Override
     public void onTimeTick() {
+        mView.onTimeChanged();
+        mTimeH.refreshTime();
+        mTimeM.refreshTime();
+        mTimeS.refreshTime();
     }
 
     @Override
