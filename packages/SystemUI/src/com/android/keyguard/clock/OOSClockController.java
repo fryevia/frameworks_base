@@ -21,6 +21,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Paint.Style;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextClock;
@@ -163,6 +164,17 @@ public class OOSClockController implements ClockPlugin {
         mDay.setTextColor(color);
         mDate.setTextColor(color);
     }
+
+    @Override
+    public void setTypeface(Typeface tf) {
+        mTimeClock.setTypeface(tf);
+        mDay.setTypeface(tf);
+        mDate.setTypeface(tf);
+        mTimeClockAccented.setTypeface(tf);
+    }
+
+    @Override
+    public void setDateTypeface(Typeface tf) {}
 
     @Override
     public void setColorPalette(boolean supportsDarkText, int[] colorPalette) {

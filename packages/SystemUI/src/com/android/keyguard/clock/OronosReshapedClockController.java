@@ -26,6 +26,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.VectorDrawable;
 import android.graphics.Paint.Style;
+import android.graphics.Typeface;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -181,6 +182,17 @@ public class OronosReshapedClockController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
+    }
+
+    @Override
+    public void setTypeface(Typeface tf) {
+        mHourClock.setTypeface(tf);
+        mMinuteClock.setTypeface(tf);
+    }
+
+    @Override
+    public void setDateTypeface(Typeface tf) {
+        mLongDate.setTypeface(tf);
     }
 
     @Override

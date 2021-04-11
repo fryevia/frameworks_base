@@ -21,6 +21,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint.Style;
+import android.graphics.Typeface;
 import android.icu.text.DateFormat;
 import android.icu.text.DisplayContext;
 import android.view.LayoutInflater;
@@ -167,6 +168,15 @@ public class TypeAltClockController implements ClockPlugin {
         mTextFormalTime.setTextColor(color);
         mTextFormalDate.setTextColor(color);
     }
+
+    @Override
+    public void setTypeface(Typeface tf) {
+        mTextFormalTime.setTypeface(tf);
+        mTextFormalDate.setTypeface(tf);
+    }
+
+    @Override
+    public void setDateTypeface(Typeface tf) {}
 
     @Override
     public void setColorPalette(boolean supportsDarkText, int[] colorPalette) {}

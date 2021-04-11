@@ -23,6 +23,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint.Style;
+import android.graphics.Typeface;
 import android.graphics.PorterDuff.Mode;
 import android.icu.text.DateFormat;
 import android.icu.text.DisplayContext;
@@ -190,6 +191,12 @@ public class GradientFireClockController implements ClockPlugin {
         updateColor();
         mLockClock.setTextColor(color);
         mDateText.setTextColor(color);
+    }
+
+    @Override
+    public void setTypeface(Typeface tf) {
+        mLockClock.setTypeface(tf);
+        mDateText.setTypeface(tf);
     }
 
     @Override

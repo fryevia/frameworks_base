@@ -22,6 +22,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint.Style;
+import android.graphics.Typeface;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -180,6 +181,18 @@ public class FluidClockController implements ClockPlugin {
         mDay.setTextColor(color);
         mYear.setTextColor(color);
     }
+
+    @Override
+    public void setTypeface(Typeface tf) {
+        mTimeClock.setTypeface(tf);
+        mSecondsClock.setTypeface(tf);
+        mDay.setTypeface(tf);
+        mDate.setTypeface(tf);
+        mYear.setTypeface(tf);
+    }
+
+    @Override
+    public void setDateTypeface(Typeface tf) {}
 
     @Override
     public void setColorPalette(boolean supportsDarkText, int[] colorPalette) {
