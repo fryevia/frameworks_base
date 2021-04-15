@@ -31,9 +31,8 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Standortdienste: Hohe Genauigkeit.</string>
 
     <!-- AOD QS tile -->
-    <string name="quick_settings_aod_on_charge_label">AOD beim Laden</string>
-    <string name="quick_settings_aod_off_label">AOD deaktiviert</string>
-    <string name="quick_settings_aod_off_powersave_label">AOD deaktiviert\nEnergiesparmodus</string>
+    <string name="quick_settings_aod_on_charge_label">Während des Ladevorgangs</string>
+    <string name="quick_settings_aod_off_powersave_label">Energiesparmodus aktiviert</string>
 
     <!-- Caffeine tile -->
     <string name="quick_settings_caffeine_label">Koffein</string>
