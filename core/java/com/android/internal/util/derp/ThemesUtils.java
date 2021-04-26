@@ -88,6 +88,20 @@ public static final String TAG = "ThemesUtils";
         "com.android.system.switch.fluid", // 7
     };
 
+    // Statusbar Signal icons
+    private static final String[] SIGNAL_BAR = {
+        "com.derp.systemui.signalbar_a",
+        "com.derp.systemui.signalbar_b",
+        "com.derp.systemui.signalbar_c",
+    };
+
+    // Statusbar Wifi icons
+    private static final String[] WIFI_BAR = {
+        "com.derp.systemui.wifibar_a",
+        "com.derp.systemui.wifibar_b",
+        "com.derp.systemui.wifibar_c",
+    };
+
     public static void updateSwitchStyle(IOverlayManager om, int userId, int switchStyle) {
         if (switchStyle == 1) {
             stockSwitchStyle(om, userId);
