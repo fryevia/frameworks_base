@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="clock_title_type_centered">Type (center)</string>
     <string name="clock_title_default_bold">Default (bold)</string>
-    <string name="clock_title_samsung">Samsung</string>
+    <string name="clock_title_samsung" translatable="false">Samsung</string>
     <string name="clock_title_samsung_bold">Samsung (bold)</string>
     <string name="clock_title_samsung_accent">Samsung (colored)</string>
     <string name="clock_title_mnml_box" translatable="false">MNML\'s Box</string>

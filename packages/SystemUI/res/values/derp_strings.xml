@@ -31,7 +31,7 @@
     <string name="accessibility_quick_settings_location_high_accuracy">Location reporting: high accuracy mode.</string>
 
     <!-- AOD QS tile -->
-    <string name="quick_settings_aod_label">AOD</string>
+    <string name="quick_settings_aod_label" translatable="false">AOD</string>
     <string name="quick_settings_aod_on_charge_label">While charging</string>
     <string name="quick_settings_aod_off_powersave_label">Battery saver enabled</string>
 
@@ -49,7 +49,7 @@
 
     <!-- Heads up QS tile -->
     <string name="quick_settings_heads_up_label">Heads up</string>
-    <string name="accessibility_quick_settings_heads_up_off">Heads up off.</string> 
+    <string name="accessibility_quick_settings_heads_up_off">Heads up off.</string>
     <string name="accessibility_quick_settings_heads_up_on">Heads up on.</string>
     <string name="accessibility_quick_settings_heads_up_changed_off">Heads up turned off.</string>
     <string name="accessibility_quick_settings_heads_up_changed_on">Heads up turned on.</string>
@@ -63,8 +63,8 @@
 
     <!-- Power Menu -->
     <string name="global_action_restart_advanced">Advanced</string>
-    <string name="global_action_restart_recovery">Recovery</string>
-    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_recovery" translatable="false">Recovery</string>
+    <string name="global_action_restart_bootloader" translatable="false">Bootloader</string>
     <string name="global_action_restart_ui">SystemUI</string>
     <string name="global_action_screenshot">Screenshot</string>
     <string name="global_action_screenrecord">Screenrecord</string>
@@ -90,14 +90,14 @@
 
     <!-- Tuner items -->
     <string name="status_bar_data_saver">Data saver</string>
-    <string name="status_bar_vpn">VPN</string>
+    <string name="status_bar_vpn" translatable="false">VPN</string>
     <string name="status_bar_roaming">Roaming</string>
     <string name="status_bar_camera">Camera</string>
     <string name="status_bar_location">Location</string>
     <string name="status_bar_microphone">Microphone</string>
 
     <!-- Name of the volte/vowifi status bar icon. -->
-    <string name="status_bar_ims">VoLTE/VoWiFi</string>
+    <string name="status_bar_ims" translatable="false">VoLTE/VoWiFi</string>
 
     <!-- Sound QS Tile -->
     <string name="quick_settings_sound_label">Sound</string>

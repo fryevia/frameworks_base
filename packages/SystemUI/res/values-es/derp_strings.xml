@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2020 DerpFest
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Label for area where tiles can be added to the qs panel -->
+    <string name="drag_or_tap_to_add_tiles">Mantenga presionado y arrastre o toque para agregar mosaicos</string>
+
+    <!-- Label for header of customize QS -->
+    <string name="drag_or_tap_to_rearrange_tiles">Mantén presionado y arrastra para reorganizar o toca para eliminar</string>
+
+    <!-- Advance location quick setting tile -->
+    <string name="quick_settings_secondary_location_off"></string>
+    <string name="quick_settings_location_secondary_battery_saving">Ahorro de batería</string>
+    <string name="accessibility_quick_settings_location_battery_saving">Informe de ubicación: modo de ahorro de batería.</string>
+    <string name="quick_settings_location_secondary_gps_only">Solo sensores</string>
+    <string name="accessibility_quick_settings_location_gps_only">Informe de ubicación: modo solo sensores.</string>
+    <string name="quick_settings_location_secondary_high_accuracy">Alta precisión</string>
+    <string name="accessibility_quick_settings_location_high_accuracy">Informe de ubicación: modo de alta precisión.</string>
+
+    <!-- AOD QS tile -->
+    <string name="quick_settings_aod_on_charge_label">AOD en carga</string>
+    <string name="quick_settings_aod_off_label">AOD apagado</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD apagado\nAhorro de batería</string>
+
+    <!-- Caffeine tile -->
+    <string name="quick_settings_caffeine_label">Cafeína</string>
+    <string name="accessibility_quick_settings_caffeine_off">Cafeína desactivada.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Cafeína activada.</string>
+
+    <!-- DataSwitch Tile -->
+    <string name="qs_data_switch_label">Cambie la tarjeta de datos a</string>
+    <string name="qs_data_switch_toast_0">Actualmente no hay ninguna tarjeta SIM insertada</string>
+    <string name="qs_data_switch_toast_1">Actualmente solo se encuentra insertada una tarjeta SIM</string>
+    <string name="qs_data_switch_changed_1">Usando SIM 1 para datos móviles</string>
+    <string name="qs_data_switch_changed_2">Usando SIM 2 para datos móviles</string>
+
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">Notificaciones emergentes</string>
+    <string name="accessibility_quick_settings_heads_up_off">Notificaciones emergentes desactivadas.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Notificaciones emergentes activadas.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_off">Desactivando notificaciones emergentes.</string>
+    <string name="accessibility_quick_settings_heads_up_changed_on">Activando notificaciones emergentes.</string>
+
+    <!-- Sync QS Tile -->
+    <string name="quick_settings_sync_label">Sincronizar</string>
+    <string name="accessibility_quick_settings_sync_off">Sincronización desactivada</string>
+    <string name="accessibility_quick_settings_sync_on">Sincronización activada</string>
+    <string name="accessibility_quick_settings_sync_changed_off">Desactivando sincronización</string>
+    <string name="accessibility_quick_settings_sync_changed_on">Activando sincronización</string>
+
+    <!-- Power Menu -->
+    <string name="global_action_restart_advanced">Avanzado</string>
+    <string name="global_action_restart_ui">IU del sistema</string>
+    <string name="global_action_screenshot">Captura de pantalla</string>
+    <string name="global_action_screenrecord">Grabación de pantalla</string>
+    <string name="global_action_flashlight">Linterna</string>
+
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time" formatted="false"><xliff:g id="percentage">%2$s</xliff:g> • Carga Dash (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> para completarse)</string>
+    <string name="keyguard_plugged_in_dash_charging">Carga Rápida Dash</string>
+
+    <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_vooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Carga VOOC (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> para completarse)</string>
+    <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • Carga Rápida VOOC</string>
+
+    <!-- Biometric Dialog - Use Face -->
+    <string name="biometric_dialog_button_use_face">Usar rostro</string>
+
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">Anclaje a red USB</string>
+
+    <!-- Tuner items -->
+    <string name="status_bar_data_saver">Ahorrador de datos</string>
+    <string name="status_bar_roaming">Itinerancia</string>
+    <string name="status_bar_camera">Cámara</string>
+    <string name="status_bar_location">Localización</string>
+    <string name="status_bar_microphone">Micrófono</string>
+
+    <!-- Sound QS Tile -->
+    <string name="quick_settings_sound_label">Sonido</string>
+    <string name="quick_settings_sound_ring">Sonar</string>
+    <string name="quick_settings_sound_vibrate">Vibrar</string>
+    <string name="quick_settings_sound_mute">Mudo</string>
+
+    <!-- Partial screenshot -->
+    <string name="global_screenshot_selector_capture_description">Capturar captura parcial de pantalla</string>
+    <string name="global_screenshot_selector_cancel_description">Cancelar captura de pantalla parcial</string>
+
+    <!-- Screenshot QS tile -->
+    <string name="quick_settings_screenshot_label">Captura de pantalla</string>
+    <string name="quick_settings_region_screenshot_label">Captura de pantalla parcial</string>
+
+    <string name="screenrecord_stopdot_label">Mostrar punto de parada\nPulsación larga para moverlo</string>
+    <string name="screenrecord_lowquality_label">Baja calidad para archivos de menor tamaño</string>
+
+    <string name="quick_settings_sound_search">Búsqueda de sonido</string>
+    <string name="quick_settings_sound_search_no_app">Lo siento, pero esto no funciona si no tienes una aplicación de búsqueda de sonido.</string>
+
+    <string name="quick_settings_monotoggle_tile">Modo de audio</string>
+    <string name="quick_settings_monotoggle_tile_mono">Audio mono</string>
+    <string name="quick_settings_monotoggle_tile_stereo">Audio estéreo</string>
+
+    <!-- Kill app -->
+    <string name="task_helper_app_killed">%1$s detenido a la fuerza</string>
+    <string name="empty_app_killed">Aplicación</string>
+    <string name="quick_settings_killapp_label">Matar aplicación</string>
+
+    <!-- App picker manifest entry -->
+    <string name="app_picker_dialog_title">Seleccione una aplicación</string>
+    <string name="app_picker_activity_select_title">Seleccionar actividad</string>
+
+    <!-- Ambient Music Ticker -->
+    <string name="ambientmusic_songinfo" formatted="false">%s de %s</string>
+
+    <!-- Power off/Reboot/Recovery QS Tile -->
+    <string name="quick_settings_poweroff_label">Apagado</string>
+    <string name="quick_settings_reboot_label">Reiniciar</string>
+    <string name="quick_settings_reboot_recovery_label">Recovery</string>
+
+    <!-- Screenshot Delete Toast -->
+    <string name="delete_screenshot_toast">Captura de pantalla eliminada</string>
+
+    <!-- Data usage info -->
+    <string name="usage_data">utilizado</string>
+    <string name="usage_wifi_prefix">Wi-Fi</string>
+    <string name="usage_data_prefix">Datos</string>
+
+    <!-- OmniJaws -->
+    <string name="omnijaws_service_error">Error</string>
+    <string name="omnijaws_service_unkown">Sin datos meteorológicos</string>
+    <string name="omnijaws_service_error_long">Error al cargar datos meteorológicos</string>
+    <string name="omnijaws_service_disabled">El servicio está deshabilitado</string>
+    <string name="omnijaws_detail_header">Clima</string>
+    <string name="omnijaws_label_default">Clima</string>
+    <string name="omnijaws_current_text">Ahora</string>
+    <string name="omnijaws_package_not_available">OmniJaws no disponible</string>
+    <string name="omnijaws_service_last_update">Última actualización:</string>
+
+    <!-- App Lock -->
+    <string name="applock_locked">&#160;está bloqueado</string>
+    <string name="applock_fingerprint_face">, huella digital o tu cara para desbloquear </string>
+    <string name="applock_face">&#160;o tu cara para desbloquear</string>
+    <string name="applock_fingerprint">&#160;o tu huella digital para desbloquear</string>
+    <string name="applock_credential">&#160;para desbloquear</string>
+    <string name="applock_unlock">desbloquear</string>
+
+    <!-- Heads up snooze toast -->
+    <string name="heads_up_snooze_message_one_minute"><xliff:g id="string">%s</xliff:g> - Las notificaciones emergentes se posponen durante 1 minuto </string>
+    <string name="heads_up_snooze_message"><xliff:g id="string">%1$s</xliff:g> - Las notificaciones emergentes se posponen durante <xliff:g id="number">%1$d</xliff:g> minutos</string>
+
+    <!-- Gaming mode -->
+    <string name="gaming_mode_not_enabled">El modo de juego está deshabilitado en la configuración</string>
+    <string name="quick_settings_gaming_mode_label">Modo de juego</string>
+
+    <!-- Reader mode QS tile -->
+    <string name="quick_settings_reading_mode">Modo de lectura</string>
+    <string name="accessibility_quick_settings_reading_mode_on">Modo de lectura activado.</string>
+    <string name="accessibility_quick_settings_reading_mode_off">Modo de lectura desactivado.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_on">Se activó el modo de lectura.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_off">Se desactivó el modo de lectura.</string>
+
+    <!-- Anti flicker QS tile -->
+    <string name="quick_settings_anti_flicker">Anti parpadeo</string>
+
+    <!-- PowerShare QS tile -->
+    <string name="quick_settings_powershare_label">Wireless PowerShare</string>
+    <string name="quick_settings_powershare_off_powersave_label">Wireless PowerShare desacivado\nAhorro de batería</string>
+    <string name="quick_settings_powershare_off_low_battery_label">Wireless PowerShare desactivado\nBatería demasiado baja</string>
+    <string name="quick_settings_powershare_enabled_label">Wireless PowerShare está habilitado</string>
+
+</resources>
