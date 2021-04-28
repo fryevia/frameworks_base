@@ -93,6 +93,11 @@ public static final String TAG = "ThemesUtils";
         "com.derp.systemui.signalbar_a",
         "com.derp.systemui.signalbar_b",
         "com.derp.systemui.signalbar_c",
+        "com.derp.systemui.signalbar_d",
+        "com.derp.systemui.signalbar_e",
+        "com.derp.systemui.signalbar_f",
+        "com.derp.systemui.signalbar_g",
+        "com.derp.systemui.signalbar_h",
     };
 
     // Statusbar Wifi icons
@@ -100,6 +105,11 @@ public static final String TAG = "ThemesUtils";
         "com.derp.systemui.wifibar_a",
         "com.derp.systemui.wifibar_b",
         "com.derp.systemui.wifibar_c",
+        "com.derp.systemui.wifibar_d",
+        "com.derp.systemui.wifibar_e",
+        "com.derp.systemui.wifibar_f",
+        "com.derp.systemui.wifibar_g",
+        "com.derp.systemui.wifibar_h",
     };
 
     public static void updateSwitchStyle(IOverlayManager om, int userId, int switchStyle) {
