@@ -244,13 +244,14 @@ public class KeyguardSliceProvider extends SliceProvider implements
                 mContentResolver, Settings.Secure.LOCK_SCREEN_CUSTOM_CLOCK_FACE);
         boolean isTypeClockSelected = currentClock == null ? false : currentClock.contains("Type");
         boolean isTwelveClockSelected = currentClock == null ? false : currentClock.contains("Twelve");
+        boolean isAndroidSClockSelected = currentClock == null ? false : ((currentClock.contains("Android") && currentClock.contains("S")) || (currentClock.contains("Android") && currentClock.contains("12")));
         boolean isCenterMusicTickerEnabled = Settings.System.getIntForUser(getContext().getContentResolver(),
                 Settings.System.AMBIENT_MUSIC_TICKER, 1, UserHandle.USER_CURRENT) == 2;
         // Show header if music is playing and the status bar is in the shade state. This way, an
         // animation isn't necessary when pressing power and transitioning to AOD.
         boolean keepWhenShade = mStatusBarState == StatusBarState.SHADE && mMediaIsVisible;
-        return !TextUtils.isEmpty(mMediaTitle) && (mMediaIsVisible || isTwelveClockSelected) && (mDozing || keepWhenAwake
-                || keepWhenShade || isTwelveClockSelected) && (isCenterMusicTickerEnabled || isTwelveClockSelected) && !isTypeClockSelected;
+        return !TextUtils.isEmpty(mMediaTitle) && (mMediaIsVisible || isTwelveClockSelected || isAndroidSClockSelected) && (mDozing || keepWhenAwake
+                || keepWhenShade || isTwelveClockSelected || isAndroidSClockSelected) && (isCenterMusicTickerEnabled || isTwelveClockSelected || isAndroidSClockSelected) && !isTypeClockSelected;
     }
 
     protected void addMediaLocked(ListBuilder listBuilder) {
