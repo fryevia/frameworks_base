@@ -5,6 +5,7 @@ import static com.android.systemui.statusbar.StatusBarIconView.STATE_HIDDEN;
 import static com.android.systemui.statusbar.StatusBarIconView.STATE_ICON;
 
 import android.content.Context;
+import android.content.ContentResolver;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.UserHandle;
@@ -65,11 +66,9 @@ public class NetworkTrafficSB extends NetworkTraffic implements DarkReceiver, St
     @Override
     protected void setMode() {
         super.setMode();
-        boolean enabledInSbar = !derpUtils.hasNotch(mContext) &&
-                Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.NETWORK_TRAFFIC_STATE_SB, 0,
+        mIsEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_SB_STATE, 0,
                 UserHandle.USER_CURRENT) == 1;
-        mIsEnabled = mIsEnabled && enabledInSbar;
     }
 
     @Override

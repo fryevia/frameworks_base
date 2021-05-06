@@ -4651,7 +4651,13 @@ public final class Settings {
          * Wheter to show network traffic indicator in statusbar
          * @hide
          */
-        public static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
+        public static final String NETWORK_TRAFFIC_SB_STATE = "network_traffic_sb_state";
+
+        /**
+         * Wheter to show network traffic indicator in expanded statusbar
+         * @hide
+         */
+        public static final String NETWORK_TRAFFIC_ESB_STATE = "network_traffic_esb_state";
 
          /**
          * Network traffic inactivity threshold (default is 1 kBs)
