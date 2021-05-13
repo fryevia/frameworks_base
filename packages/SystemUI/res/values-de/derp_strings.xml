@@ -108,6 +108,7 @@
 
     <string name="screenrecord_stopdot_label">Stopppunkt anzeigen\nLang drücken, um es zu bewegen</string>
     <string name="screenrecord_lowquality_label">Geringere Qualität für kleinere Dateien</string>
+    <string name="screenrecord_longer_timeout_switch_label">Größere Dateigrößenbeschränkung\nBegrenzen Sie die Aufzeichnungsgröße auf 15 GB</string>
 
     <string name="quick_settings_sound_search">Musikerkennung</string>
     <string name="quick_settings_sound_search_no_app">Entschuldigung, aber das funktioniert nicht, wenn Sie keine Musikerkennungsapp haben.</string>
