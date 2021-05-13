@@ -300,6 +300,7 @@
     <uses-permission android:name="android.permission.REBOOT" />
     <uses-permission android:name="android.permission.RECOVERY" />
 
+    <protected-broadcast android:name="com.android.systemui.action.PLUGIN_CHANGED" />
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
     <!-- Asus Long screenshot -->
