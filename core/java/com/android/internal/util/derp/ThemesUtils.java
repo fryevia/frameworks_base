@@ -79,14 +79,13 @@ public static final String TAG = "ThemesUtils";
     // Switch themes
     private static final String[] SWITCH_THEMES = {
         "com.android.system.switch.oneplus", // 0
-        "com.android.system.switch.aosp", // 1
-        "com.android.system.switch.narrow", // 2
-        "com.android.system.switch.contained", // 3
-        "com.android.system.switch.telegram", // 4
-        "com.android.system.switch.md2", // 5
-        "com.android.system.switch.retro", // 6
-        "com.android.system.switch.oos", // 7
-        "com.android.system.switch.fluid", // 8
+        "com.android.system.switch.narrow", // 1
+        "com.android.system.switch.contained", // 2
+        "com.android.system.switch.telegram", // 3
+        "com.android.system.switch.md2", // 4
+        "com.android.system.switch.retro", // 5
+        "com.android.system.switch.oos", // 6
+        "com.android.system.switch.fluid", // 7
     };
 
     public static void updateSwitchStyle(IOverlayManager om, int userId, int switchStyle) {
