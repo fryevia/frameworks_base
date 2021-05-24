@@ -158,7 +158,7 @@
 
     <!-- Heads up snooze toast -->
     <string name="heads_up_snooze_message_one_minute"><xliff:g id="string">%s</xliff:g> - Peeking-Benachrichtigungen schlummern für 1 Minute</string>
-    <string name="heads_up_snooze_message"><xliff:g id="string">%1$s</xliff:g> - Peeking-Benachrichtigungen schlummern für <xliff:g id="number">%1$d</xliff:g> Minuten</string>
+    <string name="heads_up_snooze_message"><xliff:g id="string">%1$s</xliff:g> - Peeking-Benachrichtigungen schlummern für <xliff:g id="number">%2$d</xliff:g> Minuten</string>
 
     <!-- Gaming mode -->
     <string name="gaming_mode_not_enabled">Der Gaming-Modus ist in den Einstellungen deaktiviert</string>
