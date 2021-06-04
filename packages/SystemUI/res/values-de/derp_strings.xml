@@ -140,6 +140,7 @@
 
     <!-- Data usage info -->
     <string name="usage_data">verbraucht</string>
+    <string name="usage_data_today">heute verbraucht</string>
     <string name="usage_wifi_prefix">WLAN</string>
     <string name="usage_data_prefix">Daten</string>
 
