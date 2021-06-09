@@ -169,6 +169,13 @@
     <string name="gaming_mode_not_enabled">Der Gaming-Modus ist in den Einstellungen deaktiviert</string>
     <string name="quick_settings_gaming_mode_label">Gaming-Modus</string>
 
+    <!-- Reader mode QS tile -->
+    <string name="quick_settings_reading_mode">Lese-Modus</string>
+    <string name="accessibility_quick_settings_reading_mode_on">Lesemodus an.</string>
+    <string name="accessibility_quick_settings_reading_mode_off">Lesemodus aus.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_on">Lesemodus angeschaltet.</string>
+    <string name="accessibility_quick_settings_reading_mode_changed_off">Lesemodus ausgeschaltet.</string>
+
     <!-- PowerShare QS tile -->
     <string name="quick_settings_powershare_label">Wireless PowerShare</string>
     <string name="quick_settings_powershare_off_powersave_label">Energiesparmodus</string>
