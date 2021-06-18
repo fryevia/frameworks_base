@@ -201,7 +201,7 @@ public class MobileSignalController extends SignalController<
          ContentResolver resolver = mContext.getContentResolver();
 
         mShow4gForLte = Settings.System.getIntForUser(resolver,
-                Settings.System.SHOW_FOURG_ICON, 0,
+                Settings.System.SHOW_FOURG_ICON, 1,
                 UserHandle.USER_CURRENT) == 1;
         mapIconSets();
         updateTelephony();
