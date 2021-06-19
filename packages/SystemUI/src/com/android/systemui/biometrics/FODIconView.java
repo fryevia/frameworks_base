@@ -53,7 +53,8 @@ public class FODIconView extends ImageView implements OmniSettingsService.OmniSe
         R.drawable.fod_icon_aod_anim,
         R.drawable.zaid_oneui_fod,
         R.drawable.oneui2_fod,
-        R.drawable.oos_fod_animated
+        R.drawable.oos_fod_animated,
+        R.drawable.fod_spark_animated
     };
 
     public FODIconView(Context context, int i, int i2, int i3) {
