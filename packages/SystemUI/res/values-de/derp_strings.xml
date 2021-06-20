@@ -142,6 +142,7 @@
     <string name="usage_data">verbraucht</string>
     <string name="usage_data_today">heute verbraucht</string>
     <string name="usage_wifi_prefix">WLAN</string>
+    <string name="usage_data_prefix">Daten</string>
 
     <!-- OmniJaws -->
     <string name="omnijaws_service_error">Fehler</string>
