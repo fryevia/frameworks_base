@@ -157,6 +157,7 @@ import com.android.internal.logging.UiEvent;
 import com.android.internal.logging.UiEventLogger;
 import com.android.internal.logging.UiEventLoggerImpl;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.internal.os.Zygote;
 import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.statusbar.RegisterStatusBarResult;
 import com.android.internal.view.AppearanceRegion;
@@ -5516,6 +5517,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             case STATUS_BAR_SHOW_LYRIC:
                 mLyricEnabled =
                     TunerService.parseIntegerSwitch(newValue, false);
+                SystemProperties.set(Zygote.EXTHM_STATUS_BAR_LYRIC_PROP, mLyricEnabled ? "true" : "false");
                 break;
             case STATUS_BAR_TICKER_ANIMATION_MODE:
                 mTickerAnimationMode =
