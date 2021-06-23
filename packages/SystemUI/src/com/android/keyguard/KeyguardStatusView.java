@@ -455,13 +455,22 @@ public class KeyguardStatusView extends GridLayout implements
             final ContentResolver resolver = mContext.getContentResolver();
             String currentClock = Settings.Secure.getString(
                 resolver, Settings.Secure.LOCK_SCREEN_CUSTOM_CLOCK_FACE);
-            boolean mCustomClockSelection = currentClock == null ? false : currentClock.contains("Type")
-                    || currentClock.contains("ide") || currentClock.contains("OOS 11");
+            boolean mCustomClockSelectionType = currentClock == null ? false : currentClock.contains("Type");
+            boolean mCustomClockSelectionIDE = currentClock == null ? false : currentClock.contains("IDE");
+            boolean mCustomClockSelectionOOS = currentClock == null ? false : currentClock.contains("OOS");
 
             // If left aligned style clock, align the textView to start else keep it center.
-            if (mCustomClockSelection) {
+            if (mCustomClockSelectionType) {
                 mOwnerInfo.setPaddingRelative((int) mContext.getResources()
                     .getDimension(R.dimen.custom_clock_left_padding) + 8, 0, 0, 0);
+                mOwnerInfo.setGravity(Gravity.START);
+            } else if (mCustomClockSelectionOOS) {
+                mOwnerInfo.setPaddingRelative((int) mContext.getResources()
+                    .getDimension(R.dimen.oos_clock_left_padding) + 8, 0, 0, 0);
+                mOwnerInfo.setGravity(Gravity.START);
+            } else if (mCustomClockSelectionIDE) {
+                mOwnerInfo.setPaddingRelative((int) mContext.getResources()
+                    .getDimension(R.dimen.ide_clock_left_padding) + 8, 0, 0, 0);
                 mOwnerInfo.setGravity(Gravity.START);
             } else {
                 mOwnerInfo.setPaddingRelative(0, 0, 0, 0);
