@@ -6112,6 +6112,11 @@ public final class Settings {
         public static final String CENTER_NOTIFICATION_HEADER = "center_notification_header";
 
         /**
+         * @hide
+         */
+        public static final String EDGE_MUSIC_CONTROL = "edge_music_control";
+
+        /**
          * Separators Notification Header
          * @hide
          */
@@ -6298,6 +6303,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DISPLAY_CUTOUT_MODE);
             PRIVATE_SETTINGS.add(STOCK_STATUSBAR_IN_HIDE);
             PRIVATE_SETTINGS.add(INCALL_FEEDBACK_VIBRATE);
+            PRIVATE_SETTINGS.add(EDGE_MUSIC_CONTROL);
         }
 
         /**
