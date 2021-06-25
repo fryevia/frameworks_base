@@ -18685,7 +18685,7 @@ public class ActivityManagerService extends IActivityManager.Stub
                     throw new SecurityException("No process found for calling pid "
                             + Binder.getCallingPid());
                 }
-                if (!Build.IS_DEBUGGABLE
+                if (!Build.IS_ENG
                         && (proc.info.flags&ApplicationInfo.FLAG_DEBUGGABLE) == 0) {
                     throw new SecurityException("Not running a debuggable build");
                 }
@@ -20484,7 +20484,7 @@ public class ActivityManagerService extends IActivityManager.Stub
         int callerUid = Binder.getCallingUid();
 
         // Only system can toggle the freezer state
-        if (callerUid == SYSTEM_UID || Build.IS_DEBUGGABLE) {
+        if (callerUid == SYSTEM_UID || Build.IS_ENG) {
             return mOomAdjuster.mCachedAppOptimizer.enableFreezer(enable);
         } else {
             throw new SecurityException("Caller uid " + callerUid + " cannot set freezer state ");
