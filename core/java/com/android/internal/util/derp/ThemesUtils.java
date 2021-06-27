@@ -86,6 +86,7 @@ public static final String TAG = "ThemesUtils";
         "com.android.system.switch.retro", // 5
         "com.android.system.switch.oos", // 6
         "com.android.system.switch.fluid", // 7
+        "com.android.system.switch.android_s", // 8
     };
 
     // Statusbar Signal icons
