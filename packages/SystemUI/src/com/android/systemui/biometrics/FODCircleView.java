@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2019-2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,12 +17,10 @@
 package com.android.systemui.biometrics;
 
 import android.app.admin.DevicePolicyManager;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.database.ContentObserver;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -68,7 +66,17 @@ import java.util.TimerTask;
 
 public class FODCircleView extends ImageView implements TunerService.Tunable, ConfigurationListener {
     private static final String DOZE_INTENT = "com.android.systemui.doze.pulse";
-    private static final String FOD_GESTURE = "system:" + Settings.System.FOD_GESTURE;
+    private static final String FOD_GESTURE =
+            "system:" + Settings.System.FOD_GESTURE;
+    private static final String DOZE_ENABLED =
+            Settings.Secure.DOZE_ENABLED;
+    private static final String FOD_ANIM =
+            "system:" + Settings.System.FOD_ANIM;
+    private static final String FOD_RECOGNIZING_ANIMATION =
+            "system:" + Settings.System.FOD_RECOGNIZING_ANIMATION;
+    private static final String FOD_COLOR =
+            "system:" + Settings.System.FOD_COLOR;
+
     private final int mPositionX;
     private final int mPositionY;
     private final int mSize;
@@ -95,6 +103,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
     private boolean mTouchedOutside;
 
     private boolean mDozeEnabled;
+    private boolean mDozeEnabledByDefault;
     private boolean mFodGestureEnable;
     private boolean mPressPending;
     private boolean mScreenTurnedOn;
@@ -112,7 +121,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
 
     private FODAnimation mFODAnimation;
     private boolean mIsRecognizingAnimEnabled;
-    private boolean mIsFodAnimationAvailable = false;
+    private int mFodAnim = 0;
 
     private int mDefaultPressedColor;
     private int mPressedColor;
@@ -198,8 +207,12 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         @Override
         public void onKeyguardVisibilityChanged(boolean showing) {
             mIsKeyguard = showing;
-            updateStyle();
-            if (mIsRecognizingAnimEnabled) {
+            if (!showing) {
+                hide();
+            } else {
+                updateAlpha();
+            }
+            if (mFODAnimation != null && mIsRecognizingAnimEnabled) {
                 mFODAnimation.setAnimationKeyguard(mIsKeyguard);
             }
             if (mFODIcon != null) {
@@ -210,7 +223,6 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         @Override
         public void onKeyguardBouncerChanged(boolean isBouncer) {
             mIsBouncer = isBouncer;
-            updateStyle();
             if (mUpdateMonitor.isFingerprintDetectionRunning()) {
                 if (isPinOrPattern(mUpdateMonitor.getCurrentUser()) || !isBouncer) {
                     show();
@@ -219,9 +231,6 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
                 }
             } else {
                 hide();
-            }
-            if (mIsRecognizingAnimEnabled) {
-                mFODAnimation.setAnimationKeyguard(mIsBouncer);
             }
         }
 
@@ -254,8 +263,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         public void onScreenTurnedOn() {
             if (mUpdateMonitor.isFingerprintDetectionRunning() && !mFodGestureEnable) {
                 show();
-            }
-            if (mPressPending) {
+            } else if (mFodGestureEnable && mPressPending) {
                 mHandler.post(() -> showCircle());
                 mPressPending = false;
             }
@@ -265,7 +273,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         @Override
         public void onBiometricHelp(int msgId, String helpString,
                 BiometricSourceType biometricSourceType) {
-            if (msgId == -1 && mIsFodAnimationAvailable) { // Auth error
+            if (msgId == -1 && mFODAnimation != null && mIsRecognizingAnimEnabled) { // Auth error
                 mHandler.post(() -> mFODAnimation.hideFODanimation());
             }
         }
@@ -307,10 +315,10 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
                 com.android.internal.R.bool.config_hideFodCircleGoingToSleep);
 
         mWindowManager = mContext.getSystemService(WindowManager.class);
-        mIsFodAnimationAvailable = derpUtils.isPackageInstalled(context,
+        boolean isFodAnimationAvailable = derpUtils.isPackageInstalled(context,
                                     context.getResources().getString(
                                     com.android.internal.R.string.config_fodAnimationPackage));
-        if (mIsFodAnimationAvailable) {
+        if (isFodAnimationAvailable) {
             mFODAnimation = new FODAnimation(mContext, mWindowManager, mPositionX, mPositionY);
         }
 
@@ -351,8 +359,6 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
 
         mWindowManager.addView(this, mParams);
 
-        mCustomSettingsObserver.observe();
-        mCustomSettingsObserver.update();
         updatePosition();
         hide();
 
@@ -364,46 +370,48 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         updateCutoutFlags();
 
         Dependency.get(ConfigurationController.class).addCallback(this);
-        Dependency.get(TunerService.class).addTunable(this, FOD_GESTURE,
-                Settings.Secure.DOZE_ENABLED);
+        mDozeEnabledByDefault = mContext.getResources().getBoolean(
+                    com.android.internal.R.bool.config_dozeDefaultEnabled);
+
+        Dependency.get(TunerService.class).addTunable(this,
+                FOD_GESTURE,
+                DOZE_ENABLED,
+                FOD_ANIM,
+                FOD_RECOGNIZING_ANIMATION,
+                FOD_COLOR);
     }
 
     @Override
     public void onTuningChanged(String key, String newValue) {
-        if (key.equals(FOD_GESTURE)) {
-            mFodGestureEnable = TunerService.parseIntegerSwitch(newValue, false);
-        } else if (key.equals(Settings.Secure.DOZE_ENABLED)) {
-            mDozeEnabled = TunerService.parseIntegerSwitch(newValue, true);
-        }
-    }
-
-    private CustomSettingsObserver mCustomSettingsObserver = new CustomSettingsObserver(mHandler);
-    private class CustomSettingsObserver extends ContentObserver {
-
-        CustomSettingsObserver(Handler handler) {
-            super(handler);
-        }
-
-        void observe() {
-            ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.FOD_ANIM),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.FOD_COLOR),
-                    false, this, UserHandle.USER_ALL);
-        }
-
-        @Override
-        public void onChange(boolean selfChange, Uri uri) {
-            if (uri.equals(Settings.System.getUriFor(Settings.System.FOD_ANIM)) ||
-                    uri.equals(Settings.System.getUriFor(Settings.System.FOD_COLOR))) {
-                updateStyle();
-            }
-        }
-
-        public void update() {
-            updateStyle();
+        switch (key) {
+            case FOD_GESTURE:
+                mFodGestureEnable =
+                        TunerService.parseIntegerSwitch(newValue, false);
+                break;
+            case DOZE_ENABLED:
+                mDozeEnabled =
+                        TunerService.parseIntegerSwitch(newValue, mDozeEnabledByDefault);
+                break;
+            case FOD_ANIM:
+                mFodAnim =
+                        TunerService.parseInteger(newValue, 0);
+                if (mFODAnimation != null) {
+                    mFODAnimation.update(mIsRecognizingAnimEnabled, mFodAnim);
+                }
+                break;
+            case FOD_RECOGNIZING_ANIMATION:
+                mIsRecognizingAnimEnabled =
+                        TunerService.parseIntegerSwitch(newValue, false);
+                if (mFODAnimation != null) {
+                    mFODAnimation.update(mIsRecognizingAnimEnabled, mFodAnim);
+                }
+                break;
+            case FOD_COLOR:
+                mPressedColor =
+                        TunerService.parseInteger(newValue, mDefaultPressedColor);
+                break;
+            default:
+                break;
         }
     }
 
@@ -443,7 +451,6 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        updateStyle();
         updatePosition();
     }
 
@@ -512,7 +519,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         setImageDrawable(null);
         updatePosition();
         invalidate();
-        if (mIsRecognizingAnimEnabled) {
+        if (mFODAnimation != null && mIsRecognizingAnimEnabled) {
             mFODAnimation.showFODanimation();
         }
     }
@@ -526,7 +533,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         setDim(false);
 
         setKeepScreenOn(false);
-        if (mIsRecognizingAnimEnabled) {
+        if (mFODAnimation != null && mIsRecognizingAnimEnabled) {
             mFODAnimation.hideFODanimation();
         }
     }
@@ -574,17 +581,6 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         setAlpha(mIsDreaming ? 0.5f : 1.0f);
     }
 
-    private void updateStyle() {
-        mIsRecognizingAnimEnabled = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.FOD_RECOGNIZING_ANIMATION, 0) != 0;
-        mPressedColor = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.FOD_COLOR, mDefaultPressedColor);
-
-        if (mIsFodAnimationAvailable && mFODAnimation != null) {
-            mFODAnimation.update(mIsRecognizingAnimEnabled);
-        }
-    }
-
     private void updatePosition() {
         Display defaultDisplay = mWindowManager.getDefaultDisplay();
 
@@ -621,7 +617,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
 
         if (mIsDreaming && !mIsCircleShowing) {
             mParams.y += mDreamingOffsetY;
-            if (mIsRecognizingAnimEnabled) {
+            if (mFODAnimation != null && mIsRecognizingAnimEnabled) {
                 mFODAnimation.updateParams(mParams.y);
             }
         }
