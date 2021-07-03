@@ -552,6 +552,8 @@ public class KeyguardIndicationController implements StateListener,
                 com.android.internal.R.bool.config_hasWarpCharger);
         boolean hasVoocCharger = mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_hasVoocCharger);
+        boolean hasSuperdartCharger = mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_hasSuperdartCharger);
 
         int chargingId;
         String percentage = NumberFormat.getPercentInstance().format(mBatteryLevel / 100f);
@@ -577,6 +579,10 @@ public class KeyguardIndicationController implements StateListener,
                         chargingId = hasChargingTime
                                 ? R.string.keyguard_indication_vooc_charging_time
                                 : R.string.keyguard_plugged_in_vooc_charging;
+                    } else if (hasSuperdartCharger) {
+                        chargingId = hasChargingTime
+                                ? R.string.keyguard_indication_superdart_charging_time
+                                : R.string.keyguard_plugged_in_superdart_charging;
                     } else {
                         chargingId = hasChargingTime
                                 ? R.string.keyguard_indication_charging_time_fast
