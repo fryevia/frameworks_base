@@ -5,9 +5,16 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.net.Uri;
+import android.os.Handler;
 import android.provider.Settings;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionManager;
+import android.transition.TransitionSet;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -36,6 +43,48 @@ public class PageIndicator extends ViewGroup {
 
     private int mPosition = -1;
     private boolean mAnimating;
+    private boolean mAnimatingVisibility = false;
+
+    private Handler customHandler = new Handler();
+
+    private Transition.TransitionListener mTransitionListener = new Transition.TransitionListener() {
+        @Override
+        public void onTransitionStart(Transition transition) {
+            mAnimatingVisibility = true;
+        }
+        @Override
+        public void onTransitionEnd(Transition transition) {
+            mAnimatingVisibility = false;
+        }
+        @Override
+        public void onTransitionResume(Transition transition) {
+        }
+        @Override
+        public void onTransitionPause(Transition transition) {
+        }
+        @Override
+        public void onTransitionCancel(Transition transition) {
+        }
+    };
+
+    private TransitionSet alphaSet = new TransitionSet()
+            .addTransition(new Fade())
+            .addTransition(new Slide(Gravity.BOTTOM))
+            .setDuration(500)
+            .addListener(mTransitionListener);
+
+    private Runnable hideAlpha = () -> {
+        TransitionManager.beginDelayedTransition((ViewGroup) this, alphaSet);
+        setVisibility(View.INVISIBLE);
+    };
+
+    private Runnable showAlpha = () -> {
+        boolean show = Settings.System.getInt(mContext.getContentResolver(),
+              Settings.System.QS_FOOTER_PAGE_INDICATOR, 1) != 0;
+        TransitionManager.beginDelayedTransition((ViewGroup) this, alphaSet);
+        setVisibility((show ? View.VISIBLE : View.GONE));
+        updateAlpha();
+    };
 
     public PageIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -46,6 +95,16 @@ public class PageIndicator extends ViewGroup {
         mPageDotWidth = (int) (mPageIndicatorWidth * SINGLE_SCALE);
     }
 
+    private void updateAlpha() {
+        if (getVisibility() == View.VISIBLE) {
+            customHandler.removeCallbacks(hideAlpha);
+            customHandler.postDelayed(hideAlpha, 1000);
+        } else if (!mAnimatingVisibility) {
+            customHandler.removeCallbacks(showAlpha);
+            customHandler.postDelayed(showAlpha, 0);
+        }
+    }
+
     public void setNumPages(int numPages) {
         TypedArray array = getContext().obtainStyledAttributes(
                 new int[]{android.R.attr.colorControlActivated});
@@ -54,15 +113,9 @@ public class PageIndicator extends ViewGroup {
         setNumPages(numPages, color);
     }
 
-    public void setNumPages(int numPages, int color) {
-        boolean show = Settings.System.getInt(mContext.getContentResolver(),
-              Settings.System.QS_FOOTER_PAGE_INDICATOR, 1) != 0;
-        setNumPages(numPages, color, show);
-    }
-
     /** Overload of setNumPages that allows the indicator color to be specified.*/
-    public void setNumPages(int numPages, int color, boolean show) {
-        setVisibility(numPages > 1 ? (show ? View.VISIBLE : View.GONE) : View.GONE);
+    public void setNumPages(int numPages, int color) {
+        setVisibility(numPages > 1 ? View.VISIBLE : View.GONE);
         if (numPages == getChildCount()) {
             return;
         }
@@ -77,6 +130,7 @@ public class PageIndicator extends ViewGroup {
             v.setImageResource(R.drawable.minor_a_b);
             v.setImageTintList(ColorStateList.valueOf(color));
             addView(v, new LayoutParams(mPageIndicatorWidth, mPageIndicatorHeight));
+            updateAlpha();
         }
         // Refresh state.
         setIndex(mPosition >> 1);
@@ -104,7 +158,8 @@ public class PageIndicator extends ViewGroup {
     }
 
     private void setPosition(int position) {
-        if (isVisibleToUser() && Math.abs(mPosition - position) == 1) {
+        if (// isVisibleToUser() && 
+        Math.abs(mPosition - position) == 1) {
             animate(mPosition, position);
         } else {
             if (DEBUG) Log.d(TAG, "Skipping animation " + isVisibleToUser() + " " + mPosition
@@ -123,6 +178,7 @@ public class PageIndicator extends ViewGroup {
             v.setImageResource(R.drawable.major_a_b);
             v.setAlpha(getAlpha(i == index));
         }
+        updateAlpha();
     }
 
     private void animate(int from, int to) {
