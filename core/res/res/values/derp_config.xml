@@ -240,5 +240,5 @@
     <bool name="config_hideFodCircleGoingToSleep">false</bool>
 
     <!-- Whether doze feature is enabled by default in settings -->
-    <bool name="config_dozeDefaultEnabled">false</bool>
+    <bool name="config_dozeDefaultEnabled">true</bool>
 </resources>
