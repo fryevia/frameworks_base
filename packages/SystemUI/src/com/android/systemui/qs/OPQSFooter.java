@@ -27,7 +27,6 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.android.keyguard.CarrierText;
-import com.android.systemui.Dependency;
 import com.android.systemui.R;
 import com.android.systemui.plugins.ActivityStarter;
 import com.android.systemui.statusbar.DataUsageView;
@@ -38,6 +37,8 @@ public class OPQSFooter extends LinearLayout {
     protected View mEdit;
     protected TouchAnimator mFooterAnimator;
     protected TouchAnimator mCarrierTextAnimator;
+
+    private ActivityStarter mActivityStarter;
     private FrameLayout mFooterActions;
     private SettingsButton mSettingsButton;
     private DataUsageView mDataUsageView;
@@ -88,7 +89,6 @@ public class OPQSFooter extends LinearLayout {
             mDataUsageView.setVisibility(expanded ? View.VISIBLE : View.GONE);
             if (expanded) {
                 mDataUsageView.updateUsage();
-                mDataUsageView.setOnClickListener(v -> startDataUsageActivity());
             }
         }
         if (mEdit != null) {
@@ -141,12 +141,5 @@ public class OPQSFooter extends LinearLayout {
             mCarrierTextAnimator = createCarrierTextAnimator();
         }
         mFooterActions.setVisibility(mIsLandscape && mIsQQSPanel ? View.GONE : View.VISIBLE);
-    }
-
-    private void startDataUsageActivity() {
-        Intent intent = new Intent();
-        intent.setClassName("com.android.settings",
-                "com.android.settings.Settings$DataUsageSummaryActivity");
-        Dependency.get(ActivityStarter.class).startActivity(intent, true /* dismissShade */);
     }
 }
