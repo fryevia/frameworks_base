@@ -458,11 +458,16 @@ public class KeyguardStatusView extends GridLayout implements
             boolean mCustomClockSelectionType = currentClock == null ? false : currentClock.contains("Type");
             boolean mCustomClockSelectionIDE = currentClock == null ? false : currentClock.contains("IDE");
             boolean mCustomClockSelectionOOS = currentClock == null ? false : (currentClock.contains("OOS") || currentClock.contains("Twelve"));
+            boolean mCustomClockSelectionS = currentClock == null ? false : ((currentClock.contains("Android") && currentClock.contains("S")) || (currentClock.contains("Android") && currentClock.contains("12")));
 
             // If left aligned style clock, align the textView to start else keep it center.
             if (mCustomClockSelectionType) {
                 mOwnerInfo.setPaddingRelative((int) mContext.getResources()
                     .getDimension(R.dimen.custom_clock_left_padding) + 8, 0, 0, 0);
+                mOwnerInfo.setGravity(Gravity.START);
+            } else if (mCustomClockSelectionS) {
+                mOwnerInfo.setPaddingRelative((int) mContext.getResources()
+                    .getDimension(R.dimen.s_clock_left_padding) + 8, 0, 0, 0);
                 mOwnerInfo.setGravity(Gravity.START);
             } else if (mCustomClockSelectionOOS) {
                 mOwnerInfo.setPaddingRelative((int) mContext.getResources()
