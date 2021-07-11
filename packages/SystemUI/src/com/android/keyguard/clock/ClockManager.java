@@ -151,30 +151,31 @@ public final class ClockManager {
 
         addBuiltinClock(() -> new DefaultClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new DefaultBoldClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new SamsungClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new SamsungBoldClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new BubbleClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new SamsungHighlightClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new AnalogClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new TypeClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new TypeClockCenteredController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new IDEClockController(res, layoutInflater, colorExtractor, context));
+        addBuiltinClock(() -> new AndroidTwelveClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new BubbleClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new ClockertinoClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new DividedLinesClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new FluidClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new SfunyClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new Fluidv2ClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new GradientFireClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new IDEClockController(res, layoutInflater, colorExtractor, context));
+        addBuiltinClock(() -> new IDEJavaClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new MNMLBoxClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new MNMLMinimalClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new OctaviDigitalClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new OOSClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new OronosClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new OronosReshapedClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new IDEJavaClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new ClockertinoClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new GradientFireClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new TypeClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new TypeClockCenteredController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new TypeAltClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new SamsungClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new SamsungBoldClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new SamsungHighlightClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new SfunyClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new StickerTagClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new OOSClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new OctaviDigitalClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new Fluidv2ClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new AndroidTwelveClockController(res, layoutInflater, colorExtractor));
+
         // Store the size of the display for generation of clock preview.
         DisplayMetrics dm = res.getDisplayMetrics();
         mWidth = dm.widthPixels;
