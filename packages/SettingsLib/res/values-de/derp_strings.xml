@@ -49,4 +49,10 @@
     <!-- Battery use screen. Battery status shown in chart label when charging from a VOOC source.  -->
     <string name="battery_info_status_vooc_charging">VOOC-Laden</string>
 
+    <!-- Label for estimated remaining duration of superdart battery charging -->
+    <string name="power_remaining_superdart_charging_duration_only">SuperDart-Laden (<xliff:g id="time">%1$s</xliff:g> bis voll aufgeladen)</string>
+
+    <!-- Battery use screen. Battery status shown in chart label when charging from a SuperDart source.  -->
+    <string name="battery_info_status_superdart_charging">SuperDart-Laden</string>
+
 </resources>
