@@ -181,6 +181,11 @@ public class SamsungClockController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
+        if(derpUtils.useLockscreenCustomClockAccentColor(mContext)) {
+            mClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+        } else {
+            mClock.setTextColor(color);
+        }
     }
 
     @Override

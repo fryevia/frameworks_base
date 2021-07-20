@@ -217,6 +217,7 @@ public class TypeClockCenteredController implements ClockPlugin {
         final int color = colorPalette[Math.max(0, colorPalette.length - 5)];
         if(derpUtils.useLockscreenCustomClockAccentColor(mContext)) {
             mTypeClock.setClockColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+            mLockClock.setClockColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
         } else {
             mTypeClock.setClockColor(color);
             mLockClock.setClockColor(color);
