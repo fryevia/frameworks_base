@@ -6129,22 +6129,10 @@ public final class Settings {
         public static final String CLEAR_ALL_BUTTON_GRAVITY = "clear_all_button_gravity";
 
         /**
-         * Whether to use accent lock clock colors hour
+         * Whether to use accent lock clock colors
          * @hide
          */
-        public static final String LOCKSCREEN_ACCENT_COLOR_HOUR = "lockscreen_accent_color_hour";
-
-        /**
-         * Whether to use accent lock clock colors minute
-         * @hide
-         */
-        public static final String LOCKSCREEN_ACCENT_COLOR_MINUTE = "lockscreen_accent_color_minute";
-
-        /**
-         * Whether to use accent lock clock colors custom
-         * @hide
-         */
-        public static final String LOCKSCREEN_ACCENT_COLOR_CUSTOM = "lockscreen_accent_color_custom";
+        public static final String LOCKSCREEN_ACCENT_COLOR = "lockscreen_accent_color";
 
         /**
          * @hide

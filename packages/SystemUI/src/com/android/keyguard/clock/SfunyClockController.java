@@ -166,7 +166,7 @@ public class SfunyClockController implements ClockPlugin {
     @Override
     public void setTextColor(int color) {
         mMinuteClock.setTextColor(Color.WHITE);
-        if(derpUtils.useLockscreenCustomClockAccentColor(mContext)) {
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
             mHourClock.setTextColor((mContext.getResources().getColor(R.color.lockscreen_clock_accent_color)));
         } else {
             mHourClock.setTextColor(color);

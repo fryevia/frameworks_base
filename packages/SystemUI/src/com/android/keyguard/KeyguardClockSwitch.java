@@ -294,7 +294,7 @@ public class KeyguardClockSwitch extends RelativeLayout {
         // Initialize plugin parameters.
         mClockPlugin = plugin;
         mClockPlugin.setStyle(getPaint().getStyle());
-        if(derpUtils.useLockscreenClockHourAccentColor(mContext)) {
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
             mClockPlugin.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
         } else {
             mClockPlugin.setTextColor(getCurrentTextColor());
@@ -336,7 +336,7 @@ public class KeyguardClockSwitch extends RelativeLayout {
      * It will also update plugin setTextColor if plugin is connected.
      */
     public void setTextColor(int color) {
-        if(derpUtils.useLockscreenClockHourAccentColor(mContext)) {
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
             mClockView.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
             mClockViewBold.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
             if (mClockPlugin != null) {

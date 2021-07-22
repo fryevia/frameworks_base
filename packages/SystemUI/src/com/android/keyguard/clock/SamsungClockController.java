@@ -101,15 +101,9 @@ public class SamsungClockController implements ClockPlugin {
         mClock.setFormat24Hour("kk\nmm");
         int mAccentColor = mContext.getResources().getColor(R.color.lockscreen_clock_accent_color);
 
-        if(derpUtils.useLockscreenClockMinuteAccentColor(mContext) && derpUtils.useLockscreenClockHourAccentColor(mContext)) {
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
              mClock.setFormat12Hour(Html.fromHtml("<font color=" + mAccentColor + ">hh</font><br><font color=" + mAccentColor + ">mm</font>"));
              mClock.setFormat24Hour(Html.fromHtml("<font color=" + mAccentColor + ">kk</font><br><font color=" + mAccentColor + ">mm</font>"));
-        } else if(derpUtils.useLockscreenClockHourAccentColor(mContext)) {
-             mClock.setFormat12Hour(Html.fromHtml("<font color=" + mAccentColor + ">hh</font><br>mm"));
-             mClock.setFormat24Hour(Html.fromHtml("<font color=" + mAccentColor + ">kk</font><br>mm"));
-        } else if(derpUtils.useLockscreenClockMinuteAccentColor(mContext)) {
-             mClock.setFormat12Hour(Html.fromHtml("hh<br><font color=" + mAccentColor + ">mm</font>"));
-             mClock.setFormat24Hour(Html.fromHtml("kk<br><font color=" + mAccentColor + ">mm</font>"));
         } else {
             mClock.setFormat12Hour(Html.fromHtml("hh<br>mm"));
             mClock.setFormat24Hour(Html.fromHtml("kk<br>mm"));
@@ -181,7 +175,7 @@ public class SamsungClockController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
-        if(derpUtils.useLockscreenCustomClockAccentColor(mContext)) {
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
             mClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
         } else {
             mClock.setTextColor(color);

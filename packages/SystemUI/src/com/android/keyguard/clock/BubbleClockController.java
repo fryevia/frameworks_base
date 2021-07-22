@@ -195,7 +195,7 @@ public class BubbleClockController implements ClockPlugin {
     private void updateColor() {
         final int primary = mPalette.getPrimaryColor();
 
-        if(derpUtils.useLockscreenCustomClockAccentColor(mContext)) {
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
             mLockClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
             mAnalogClock.setClockColors(primary, mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
         } else {

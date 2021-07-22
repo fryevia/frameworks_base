@@ -191,7 +191,7 @@ public class TypeClockCenteredController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
-        if(derpUtils.useLockscreenCustomClockAccentColor(mContext)) {
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
             mTypeClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
             mLockClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
         } else {
@@ -215,7 +215,7 @@ public class TypeClockCenteredController implements ClockPlugin {
             return;
         }
         final int color = colorPalette[Math.max(0, colorPalette.length - 5)];
-        if(derpUtils.useLockscreenCustomClockAccentColor(mContext)) {
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
             mTypeClock.setClockColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
             mLockClock.setClockColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
         } else {
