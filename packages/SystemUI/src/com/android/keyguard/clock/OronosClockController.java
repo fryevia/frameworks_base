@@ -17,6 +17,7 @@
 package com.android.keyguard.clock;
 
 import android.app.WallpaperManager;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -37,6 +38,7 @@ import com.android.internal.colorextraction.ColorExtractor;
 import com.android.systemui.R;
 import com.android.systemui.colorextraction.SysuiColorExtractor;
 import com.android.systemui.plugins.ClockPlugin;
+import com.android.internal.util.derp.derpUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -94,6 +96,8 @@ public class OronosClockController implements ClockPlugin {
     private String mDescFormat;
     private TimeZone mTimeZone;
 
+    private Context mContext;
+
     /**
      * Create a DefaultClockController instance.
      *
@@ -102,10 +106,11 @@ public class OronosClockController implements ClockPlugin {
      * @param colorExtractor Extracts accent color from wallpaper.
      */
     public OronosClockController(Resources res, LayoutInflater inflater,
-                              SysuiColorExtractor colorExtractor) {
+                              SysuiColorExtractor colorExtractor, Context context) {
         mResources = res;
         mLayoutInflater = inflater;
         mColorExtractor = colorExtractor;
+        mContext = context;
     }
 
     private void createViews() {
@@ -179,6 +184,27 @@ public class OronosClockController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
+        GradientDrawable hourBg = (GradientDrawable) mHourClock.getBackground();
+        GradientDrawable minBg = (GradientDrawable) mMinuteClock.getBackground();
+        GradientDrawable dateBg = (GradientDrawable) mLongDate.getBackground();
+
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
+            hourBg.setColor((mContext.getResources().getColor(R.color.lockscreen_clock_accent_color)));
+            minBg.setStroke(mResources.getDimensionPixelSize(R.dimen.clock_oronos_outline_size),
+                            (mContext.getResources().getColor(R.color.lockscreen_clock_accent_color)));
+            mHourClock.setTextColor(Color.BLACK);
+            mMinuteClock.setTextColor((mContext.getResources().getColor(R.color.lockscreen_clock_accent_color)));
+            mLongDate.setTextColor((mContext.getResources().getColor(R.color.lockscreen_clock_accent_color)));
+            minBg.setColor(Color.TRANSPARENT);
+        } else {
+            hourBg.setColor(Color.WHITE);
+            minBg.setStroke(mResources.getDimensionPixelSize(R.dimen.clock_oronos_outline_size),
+                            Color.WHITE);
+            mHourClock.setTextColor(Color.BLACK);
+            mMinuteClock.setTextColor(Color.WHITE);
+            mLongDate.setTextColor(Color.WHITE);
+            minBg.setColor(Color.TRANSPARENT);
+        }
     }
 
     @Override

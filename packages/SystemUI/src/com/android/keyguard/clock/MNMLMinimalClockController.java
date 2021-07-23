@@ -16,6 +16,7 @@
 package com.android.keyguard.clock;
 
 import android.app.WallpaperManager;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,6 +33,7 @@ import com.android.internal.colorextraction.ColorExtractor;
 import com.android.systemui.R;
 import com.android.systemui.colorextraction.SysuiColorExtractor;
 import com.android.systemui.plugins.ClockPlugin;
+import com.android.internal.util.derp.derpUtils;
 
 import java.util.TimeZone;
 
@@ -74,6 +76,8 @@ public class MNMLMinimalClockController implements ClockPlugin {
     private TextClock mClock;
     private TextClock mDate;
 
+    private Context mContext;
+
     /**
      * Create a DefaultClockController instance.
      *
@@ -82,10 +86,11 @@ public class MNMLMinimalClockController implements ClockPlugin {
      * @param colorExtractor Extracts accent color from wallpaper.
      */
     public MNMLMinimalClockController(Resources res, LayoutInflater inflater,
-            SysuiColorExtractor colorExtractor) {
+            SysuiColorExtractor colorExtractor, Context context) {
         mResources = res;
         mLayoutInflater = inflater;
         mColorExtractor = colorExtractor;
+        mContext = context;
     }
 
     private void createViews() {
@@ -166,6 +171,13 @@ public class MNMLMinimalClockController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
+            mClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+            mDate.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+        } else {
+            mClock.setTextColor(color);
+            mDate.setTextColor(color);
+        }
     }
 
     @Override

@@ -18,12 +18,14 @@
 package com.android.keyguard.clock;
 
 import android.app.WallpaperManager;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint.Style;
 import android.graphics.Typeface;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextClock;
@@ -33,6 +35,7 @@ import com.android.internal.colorextraction.ColorExtractor;
 import com.android.systemui.R;
 import com.android.systemui.colorextraction.SysuiColorExtractor;
 import com.android.systemui.plugins.ClockPlugin;
+import com.android.internal.util.derp.derpUtils;
 
 import java.util.TimeZone;
 
@@ -85,6 +88,8 @@ public class DividedLinesClockController implements ClockPlugin {
     private View mTopLine;
     private View mBottomLine;
 
+    private Context mContext;
+
     /**
      * Create a DefaultClockController instance.
      *
@@ -93,10 +98,11 @@ public class DividedLinesClockController implements ClockPlugin {
      * @param colorExtractor Extracts accent color from wallpaper.
      */
     public DividedLinesClockController(Resources res, LayoutInflater inflater,
-            SysuiColorExtractor colorExtractor) {
+            SysuiColorExtractor colorExtractor, Context context) {
         mResources = res;
         mLayoutInflater = inflater;
         mColorExtractor = colorExtractor;
+        mContext = context;
     }
 
     private void createViews() {
@@ -174,7 +180,13 @@ public class DividedLinesClockController implements ClockPlugin {
 
     @Override
     public void setTextColor(int color) {
-        mClock.setTextColor(color);
+        if(derpUtils.useLockscreenClockAccentColor(mContext)) {
+            mClock.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+            mDate.setTextColor(mContext.getResources().getColor(R.color.lockscreen_clock_accent_color));
+        } else {
+            mClock.setTextColor(color);
+            mDate.setTextColor(color);
+        }
     }
 
     @Override
