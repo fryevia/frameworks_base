@@ -160,6 +160,7 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.os.Zygote;
 import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.statusbar.RegisterStatusBarResult;
+import com.android.internal.statusbar.ThemeAccentUtils;
 import com.android.internal.view.AppearanceRegion;
 import com.android.keyguard.KeyguardUpdateMonitor;
 import com.android.keyguard.KeyguardUpdateMonitorCallback;
@@ -177,6 +178,7 @@ import com.android.systemui.Prefs;
 import com.android.systemui.R;
 import com.android.systemui.SystemUI;
 import com.android.systemui.SystemUIFactory;
+import com.android.systemui.UiOffloadThread;
 import com.android.systemui.ambientmusic.AmbientIndicationContainer;
 import com.android.systemui.assist.AssistManager;
 import com.android.systemui.biometrics.FODCircleViewImpl;
@@ -752,6 +754,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     protected final BatteryController mBatteryController;
     protected boolean mPanelExpanded;
     private IOverlayManager mOverlayManager;
+    private final UiOffloadThread mUiOffloadThread = Dependency.get(UiOffloadThread.class);
     private UiModeManager mUiModeManager;
     protected boolean mIsKeyguard;
     private LogMaker mStatusBarStateLog;
@@ -803,6 +806,8 @@ public class StatusBar extends SystemUI implements DemoMode,
     private boolean mShowNavBar;
 
     private ActivityIntentHelper mActivityIntentHelper;
+
+    private int mRoundedStyle;
 
     /**
      * Public constructor for StatusBar.
@@ -2427,6 +2432,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.Secure.SYSUI_ROUNDED_FWVALS),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.BERRY_ROUNDED_STYLE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -2474,6 +2482,8 @@ public class StatusBar extends SystemUI implements DemoMode,
                 handleCutout(null);
             } else if (uri.equals(Settings.System.getUriFor(Settings.Secure.SYSUI_ROUNDED_FWVALS))) {
                 updateRoundedFwvals();
+            } else if (uri.equals(Settings.System.getUriFor(Settings.System.BERRY_ROUNDED_STYLE))) {
+                updateCorners();
             }
         }
 
@@ -2727,6 +2737,15 @@ public class StatusBar extends SystemUI implements DemoMode,
             }
         }
     }
+
+   private void updateCorners() {
+       int roundedStyle = Settings.System.getIntForUser(mContext.getContentResolver(),
+                        Settings.System.BERRY_ROUNDED_STYLE, 0, UserHandle.USER_CURRENT);
+       if (mRoundedStyle != roundedStyle) {
+           mRoundedStyle = roundedStyle;
+           updateRoundedStyle();
+       }
+   }
 
     void makeExpandedVisible(boolean force) {
         if (SPEW) Log.d(TAG, "Make expanded visible: expanded visible=" + mExpandedVisible);
@@ -4437,6 +4456,12 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     public void stockSwitchStyle() {
         ThemesUtils.stockSwitchStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    }
+
+    private void updateRoundedStyle() {
+        mUiOffloadThread.execute(() -> {
+            ThemeAccentUtils.setRoundedStyle(mOverlayManager, mRoundedStyle, mContext.getUserId());
+        });
     }
 
     private void updateDozingState() {

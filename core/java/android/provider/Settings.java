@@ -5700,6 +5700,12 @@ public final class Settings {
         public static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
 
         /**
+         * Switch between different rounded styles
+         * @hide
+         */
+        public static final String BERRY_ROUNDED_STYLE = "berry_rounded_style";
+
+        /**
          * Whether the phone ringtone should be played in an increasing manner
          * @hide
          */
