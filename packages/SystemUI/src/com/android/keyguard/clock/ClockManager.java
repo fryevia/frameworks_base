@@ -167,7 +167,7 @@ public final class ClockManager {
         addBuiltinClock(() -> new MNMLBoxClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new MNMLMinimalClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new OctaviDigitalClockController(res, layoutInflater, colorExtractor));
-        addBuiltinClock(() -> new OOSClockController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new OOSClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new OronosClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new OronosReshapedClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new TypeClockController(res, layoutInflater, colorExtractor, context));
