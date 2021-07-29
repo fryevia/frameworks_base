@@ -457,7 +457,7 @@ public class KeyguardStatusView extends GridLayout implements
                 resolver, Settings.Secure.LOCK_SCREEN_CUSTOM_CLOCK_FACE);
             boolean mCustomClockSelectionType = currentClock == null ? false : currentClock.contains("Type");
             boolean mCustomClockSelectionIDE = currentClock == null ? false : currentClock.contains("IDE");
-            boolean mCustomClockSelectionOOS = currentClock == null ? false : currentClock.contains("OOS");
+            boolean mCustomClockSelectionOOS = currentClock == null ? false : (currentClock.contains("OOS") || currentClock.contains("Twelve"));
 
             // If left aligned style clock, align the textView to start else keep it center.
             if (mCustomClockSelectionType) {
