@@ -86,9 +86,6 @@ public class SystemSettings {
         Settings.System.NOTIFICATION_LIGHT_PULSE,
         Settings.System.RINGTONE_VIBRATION_PATTERN,
         Settings.System.PROXIMITY_ON_WAKE,
-        Settings.System.VIBRATE_ON_CONNECT,
-        Settings.System.VIBRATE_ON_CALLWAITING,
-        Settings.System.VIBRATE_ON_DISCONNECT,
         Settings.System.DOZE_ON_CHARGE,
         Settings.System.NOTIFICATION_PULSE,
         Settings.System.AOD_NOTIFICATION_PULSE,
@@ -96,5 +93,6 @@ public class SystemSettings {
         Settings.System.NOTIFICATION_PULSE_ACCENT,
         Settings.System.NOTIFICATION_PULSE_COLOR_AUTOMATIC,
         Settings.System.OMNI_CUSTOM_FP_ICON,
+        Settings.System.INCALL_FEEDBACK_VIBRATE,
     };
 }
