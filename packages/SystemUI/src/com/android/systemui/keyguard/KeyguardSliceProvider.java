@@ -316,19 +316,11 @@ public class KeyguardSliceProvider extends SliceProvider implements
         String dndStringTitle = getContext().getResources().getString(R.string.quick_settings_dnd_label);
 
         if (isTwelveClockSelected) {
-            if (!com.android.internal.util.ssos.Utils.isThemeEnabled("com.android.theme.icon_pack.oos.systemui")) {
                 RowBuilder dndBuilder = new RowBuilder(mDndUri)
                         .setTitle(dndStringTitle)
                         .setContentDescription(dndString)
                         .addEndItem(noOOS12, ListBuilder.ICON_IMAGE);
                 builder.addRow(dndBuilder);
-            } else {
-                RowBuilder dndBuilder = new RowBuilder(mDndUri)
-                        .setTitle(dndStringTitle)
-                        .setContentDescription(dndString)
-                        .addEndItem(OOS12, ListBuilder.ICON_IMAGE);
-                builder.addRow(dndBuilder);
-            }
         } else {
             RowBuilder dndBuilder = new RowBuilder(mDndUri)
                     .setContentDescription(dndString)
