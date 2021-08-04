@@ -199,6 +199,9 @@ public final class BatteryService extends SystemService {
     private int mBatteryFullARGB;
     private int mBatteryReallyFullARGB;
 
+    // Battery light customization
+    private boolean mBatteryLightEnabled;
+
     private boolean mSentLowBatteryBroadcast = false;
 
     private ActivityManagerInternal mActivityManagerInternal;
@@ -248,6 +251,8 @@ public final class BatteryService extends SystemService {
             invalidChargerObserver.startObserving(
                     "DEVPATH=/devices/virtual/switch/invalid_charger");
         }
+        mBatteryLightEnabled = mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveBatteryLed);
     }
 
     @Override
@@ -304,6 +309,9 @@ public final class BatteryService extends SystemService {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.BATTERY_LIGHT_LOW_BLINKING),
                     false, this, UserHandle.USER_ALL);
+           resolver.registerContentObserver(Settings.Global.getUriFor(
+                    Settings.Global.BATTERY_LIGHT_ENABLED),
+                    false, this, UserHandle.USER_ALL);
             if (mMultiColorLed) {
                 resolver.registerContentObserver(Settings.System.getUriFor(
                         Settings.System.BATTERY_LIGHT_LOW_COLOR),
@@ -350,6 +358,9 @@ public final class BatteryService extends SystemService {
                     Settings.System.BATTERY_LIGHT_REALLYFULL_COLOR, mMultiColorLed ? 0xFF00FF00:
                     res.getInteger(
                     com.android.internal.R.integer.config_notificationsBatteryFullARGB));
+           mBatteryLightEnabled = Settings.Global.getInt(resolver,
+                    Settings.Global.BATTERY_LIGHT_ENABLED, mContext.getResources().getBoolean(
+                        com.android.internal.R.bool.config_intrusiveBatteryLed) ? 1 : 0) == 1;
              updateLed();
         }
     }
@@ -1227,9 +1238,9 @@ public final class BatteryService extends SystemService {
 
             final int level = mHealthInfo.batteryLevel;
             final int status = mHealthInfo.batteryStatus;
-            if (mIsDndActive && !mAllowBatteryLightOnDnd) {
+            if ((mIsDndActive && !mAllowBatteryLightOnDnd) || !mBatteryLightEnabled){
                 mBatteryLight.turnOff();
-            } else if (level < mLowBatteryWarningLevel) {
+             } else if (level < mLowBatteryWarningLevel) {
                 if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
                     // Battery is charging and low
                     mBatteryLight.setColor(mBatteryLowARGB);

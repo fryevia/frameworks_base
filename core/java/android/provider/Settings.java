@@ -15081,6 +15081,11 @@ public final class Settings {
          */
         public static final String WAKE_WHEN_PLUGGED_OR_UNPLUGGED =
                 "wake_when_plugged_or_unplugged";
+	/**
+        * Whether to allow battery light
+        * @hide
+        */
+        public static final String BATTERY_LIGHT_ENABLED = "battery_light_enabled";
 
         /**
          * Global settings that shouldn't be persisted.
