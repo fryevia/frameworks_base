@@ -334,7 +334,7 @@ public class AndroidSDP3ClockController implements ClockPlugin {
                 button.setTextColor(blendedColor);
                 button.setGravity(Gravity.START);
                 button.setTag(itemTag);
-                final int viewIndex = i - (mHasHeader ? 0 : 0);
+                final int viewIndex = i - (mHasHeader ? 3 : 0);
                 mRow.addView(button, viewIndex);
             } else {
                 button.setShouldTintDrawable(!isWeatherSlice);
