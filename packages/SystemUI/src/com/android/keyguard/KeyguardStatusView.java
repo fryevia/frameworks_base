@@ -48,6 +48,7 @@ import com.android.systemui.Dependency;
 import com.android.systemui.R;
 import com.android.systemui.Interpolators;
 import com.android.systemui.omni.CurrentWeatherView;
+import com.android.systemui.statusbar.phone.NotificationIconContainer;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.tuner.TunerService;
 
@@ -70,7 +71,7 @@ public class KeyguardStatusView extends GridLayout implements
     private KeyguardClockSwitch mClockView;
     private TextView mOwnerInfo;
     private KeyguardSliceView mKeyguardSlice;
-    private View mNotificationIcons;
+    private NotificationIconContainer mNotificationIcons;
     private View mKeyguardSliceView;
     private Runnable mPendingMarqueeStart;
     private Handler mHandler;
@@ -256,6 +257,11 @@ public class KeyguardStatusView extends GridLayout implements
      * Moves clock, adjusting margins when slice content changes.
      */
     private void onSliceContentChanged() {
+        if (mNotificationIcons != null) {
+            mNotificationIcons.setCenter(isTypeClock() || isIDEClock() || isSClock() || isOOSClock() ? false : true);
+            mNotificationIcons.setCustomPaddingStart(getCustomClockPaddingStart());
+        }
+
         final boolean hasHeader = mKeyguardSlice.hasHeader();
         mClockView.setKeyguardShowingHeader(hasHeader);
         if (mShowingHeader == hasHeader) {
@@ -448,34 +454,54 @@ public class KeyguardStatusView extends GridLayout implements
                 com.android.internal.R.string.global_action_logout));
     }
 
+    private boolean isTypeClock() {
+        final ContentResolver resolver = mContext.getContentResolver();
+        String currentClock = Settings.Secure.getString(
+            resolver, Settings.Secure.LOCK_SCREEN_CUSTOM_CLOCK_FACE);
+        return currentClock == null ? false : currentClock.contains("Type");
+    }
+
+    private boolean isIDEClock() {
+        final ContentResolver resolver = mContext.getContentResolver();
+        String currentClock = Settings.Secure.getString(
+            resolver, Settings.Secure.LOCK_SCREEN_CUSTOM_CLOCK_FACE);
+        return currentClock == null ? false : currentClock.contains("IDE");
+    }
+
+    private boolean isSClock() {
+        final ContentResolver resolver = mContext.getContentResolver();
+        String currentClock = Settings.Secure.getString(
+            resolver, Settings.Secure.LOCK_SCREEN_CUSTOM_CLOCK_FACE);
+        return currentClock == null ? false : ((currentClock.contains("Android") && currentClock.contains("S")) || (currentClock.contains("Android") && currentClock.contains("12")));
+    }
+
+    private boolean isOOSClock() {
+        final ContentResolver resolver = mContext.getContentResolver();
+        String currentClock = Settings.Secure.getString(
+            resolver, Settings.Secure.LOCK_SCREEN_CUSTOM_CLOCK_FACE);
+        return currentClock == null ? false : (currentClock.contains("OOS") || currentClock.contains("Twelve"));
+    }
+
+    private int getCustomClockPaddingStart() {
+        if (isTypeClock()) {
+            return (int) mContext.getResources().getDimension(R.dimen.custom_clock_left_padding);
+        } else if (isIDEClock()) {
+            return (int) mContext.getResources().getDimension(R.dimen.ide_clock_left_padding);
+        } else if (isSClock()) {
+            return (int) mContext.getResources().getDimension(R.dimen.s_clock_left_padding);
+        }
+        return (int) mContext.getResources().getDimension(R.dimen.oos_clock_left_padding);
+    }
+
+
     private void updateOwnerInfo() {
         if (mOwnerInfo == null) return;
         String info = mLockPatternUtils.getDeviceOwnerInfo();
         if (info == null) {
-            final ContentResolver resolver = mContext.getContentResolver();
-            String currentClock = Settings.Secure.getString(
-                resolver, Settings.Secure.LOCK_SCREEN_CUSTOM_CLOCK_FACE);
-            boolean mCustomClockSelectionType = currentClock == null ? false : currentClock.contains("Type");
-            boolean mCustomClockSelectionIDE = currentClock == null ? false : currentClock.contains("IDE");
-            boolean mCustomClockSelectionOOS = currentClock == null ? false : (currentClock.contains("OOS") || currentClock.contains("Twelve"));
-            boolean mCustomClockSelectionS = currentClock == null ? false : ((currentClock.contains("Android") && currentClock.contains("S")) || (currentClock.contains("Android") && currentClock.contains("12")));
 
             // If left aligned style clock, align the textView to start else keep it center.
-            if (mCustomClockSelectionType) {
-                mOwnerInfo.setPaddingRelative((int) mContext.getResources()
-                    .getDimension(R.dimen.custom_clock_left_padding) + 8, 0, 0, 0);
-                mOwnerInfo.setGravity(Gravity.START);
-            } else if (mCustomClockSelectionS) {
-                mOwnerInfo.setPaddingRelative((int) mContext.getResources()
-                    .getDimension(R.dimen.s_clock_left_padding) + 8, 0, 0, 0);
-                mOwnerInfo.setGravity(Gravity.START);
-            } else if (mCustomClockSelectionOOS) {
-                mOwnerInfo.setPaddingRelative((int) mContext.getResources()
-                    .getDimension(R.dimen.oos_clock_left_padding) + 8, 0, 0, 0);
-                mOwnerInfo.setGravity(Gravity.START);
-            } else if (mCustomClockSelectionIDE) {
-                mOwnerInfo.setPaddingRelative((int) mContext.getResources()
-                    .getDimension(R.dimen.ide_clock_left_padding) + 8, 0, 0, 0);
+            if (isTypeClock() || isOOSClock() || isIDEClock()) {
+                mOwnerInfo.setPaddingRelative(getCustomClockPaddingStart() + 8, 0, 0, 0);
                 mOwnerInfo.setGravity(Gravity.START);
             } else {
                 mOwnerInfo.setPaddingRelative(0, 0, 0, 0);
