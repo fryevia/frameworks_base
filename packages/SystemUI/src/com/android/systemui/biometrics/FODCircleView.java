@@ -547,12 +547,12 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
             return;
         }
 
-        if (mIsKeyguard && mUpdateMonitor.getUserCanSkipBouncer(mUpdateMonitor.getCurrentUser())) {
+        if (mIsKeyguard && mUpdateMonitor.getUserCanSkipBouncer(mUpdateMonitor.getCurrentUser()) && !mFodGestureEnable) {
             // Ignore show calls if user can skip bouncer
             return;
         }
 
-        if (mIsKeyguard && !mIsBiometricRunning) {
+        if (mIsKeyguard && !mIsBiometricRunning && !mFodGestureEnable) {
             return;
         }
 
