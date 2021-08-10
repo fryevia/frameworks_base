@@ -10623,12 +10623,6 @@ public final class Settings {
         public static final String PULSE_SMOOTHING_ENABLED = "pulse_smoothing_enabled";
 
         /**
-         * Whether to hide lock icon on lockscreen
-         * {@hide}
-         */
-        public static final String HIDE_LOCKICON = "hide_lockicon";
-
-        /**
          * Pulse Solid units rounded
          * @hide
          */
